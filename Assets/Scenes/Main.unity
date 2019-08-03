@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 880052503}
   - component: {fileID: 880052504}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,6 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0387ef741757d4d46a919273da3a756b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 1132238824}
+  bow: {fileID: 1928648336}
 --- !u!212 &1580602662
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -6,7 +6,8 @@ public class Rider : MonoBehaviour
 {
     private const int ANTICLOCKWISE_TURN_RATIO = 30;
 
-    private Main game;
+    public Main game;
+    public Bow bow;
 
     void Awake()
     {
@@ -16,7 +17,7 @@ public class Rider : MonoBehaviour
     void Update ()
     {
         Move();
-        CurrentWeapon().Attack( NearestEnemy() );
+        bow.Shoot( NearestEnemy() );
 	}
 
     private void Move()
@@ -52,10 +53,5 @@ public class Rider : MonoBehaviour
         }
 
         return nearest;
-    }
-
-    private Weapon CurrentWeapon()
-    {
-        return GetComponentInChildren<Weapon>();
     }
 }

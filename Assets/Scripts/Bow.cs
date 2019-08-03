@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bow : MonoBehaviour, Weapon
+public class Bow : MonoBehaviour
 {
     public GameObject arrowPrefab;
 
@@ -18,7 +18,7 @@ public class Bow : MonoBehaviour, Weapon
 
     void Update()
     {
-        //IncreaseRange();
+        IncreaseRange();
     }
 
     const int MAX_ARROWS = 5;
@@ -31,12 +31,12 @@ public class Bow : MonoBehaviour, Weapon
     {
         if ( range < MAX_RANGE )
         {
-            range += Time.smoothDeltaTime;
-            transform.localScale = Vector3.one * range; 
+            range += MAX_RANGE * Time.smoothDeltaTime;
+            transform.localScale = Vector3.one * ( range / MAX_RANGE ); 
         }
     }
 
-    void Weapon.Attack( GameObject target )
+    public void Shoot( GameObject target )
     {
         if ( target == null )
         {
@@ -45,11 +45,12 @@ public class Bow : MonoBehaviour, Weapon
 
         float distance = ( target.transform.position - transform.position ).magnitude;
 
-        if ( distance < 0.5f )
+        Debug.Log( range );
+        if ( distance < range )
         {
             Destroy( target );
+            range = 0;
         }
 
-        range = 0;
     }
 }
