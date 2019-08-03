@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Rider : MonoBehaviour
 {
-    private const int ANTICLOCKWISE_TURN_RATIO = 30;
 
     public Main game;
-    public Bow bow;
+    public GameObject bowRangeSprite;
+    public GameObject arrowPrefab;
 
     void Awake()
     {
@@ -17,8 +17,37 @@ public class Rider : MonoBehaviour
     void Update ()
     {
         Move();
-        bow.Shoot( NearestEnemy() );
-	}
+
+        if ( arrows > 0 )
+        {
+            IncreaseBowRange();
+            Shoot( NearestEnemy() );
+        }
+
+        foreach( GameObject arrow in game.Arrows() )
+        {
+            if ( WithinDistance( arrow, PICK_UP_RANGE ) )
+            {
+                Destroy( arrow );
+                arrows++;
+            }
+        }
+
+        // pickup routine
+        // first arrows
+        // then bow
+        // then sword
+    }
+
+    private const int ANTICLOCKWISE_TURN_RATIO = 30;
+
+    private const float MAX_BOW_RANGE = 2f;
+
+    private const float PICK_UP_RANGE = 0.1f;
+    private const int SECONDS_TO_FULL_RANGE = 3;
+    private const int MAX_ARROWS = 5;
+    private int arrows = MAX_ARROWS;
+    private float bowRange = MAX_BOW_RANGE;
 
     private void Move()
     {
@@ -53,5 +82,39 @@ public class Rider : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    private void IncreaseBowRange()
+    {
+        if ( bowRange < MAX_BOW_RANGE )
+        {
+            bowRange += MAX_BOW_RANGE * Time.smoothDeltaTime / SECONDS_TO_FULL_RANGE;
+            transform.localScale = Vector3.one * ( bowRange / MAX_BOW_RANGE );
+        }
+    }
+
+    private bool WithinDistance( GameObject target, float distance )
+    {
+        float distanceToTarget = ( target.transform.position - transform.position ).magnitude;
+        return distanceToTarget < distance;
+    }
+
+    private void Shoot( GameObject target )
+    {
+        if ( target == null )
+        {
+            return;
+        }
+
+        if ( WithinDistance( target, bowRange ) )
+        {
+            GameObject arrow = Instantiate( arrowPrefab, game.transform );
+            arrow.transform.position = target.transform.position;
+
+            arrows--;
+
+            Destroy( target );
+            bowRange = 0;
+        }
     }
 }

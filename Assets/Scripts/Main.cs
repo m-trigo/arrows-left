@@ -16,17 +16,27 @@ public class Main : MonoBehaviour
 
     }
 
-    public List<GameObject> Enemies()
+    public static List<GameObject> All<T>( Transform transform )
     {
-        List<GameObject> enemies = new List<GameObject>();
-        foreach ( Transform child in gameObject.transform )
+        List<GameObject> list = new List<GameObject>();
+        foreach ( Transform child in transform )
         {
-            if ( child.gameObject.GetComponent<Enemy>() != null )
+            if ( child.gameObject.GetComponent<T>() != null )
             {
-                enemies.Add( child.gameObject );
+                list.Add( child.gameObject );
             }
         }
 
-        return enemies;
+        return list;
+    }
+
+    public List<GameObject> Enemies()
+    {
+        return All<Enemy>( transform );
+    }
+
+    public List<GameObject> Arrows()
+    {
+        return All<Arrow>( transform );
     }
 }

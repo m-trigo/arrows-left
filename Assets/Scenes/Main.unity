@@ -389,7 +389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 1132238824}
-  bow: {fileID: 1928648336}
+  bowRangeSprite: {fileID: 1928648333}
+  arrowPrefab: {fileID: 7138808981198237997, guid: b61d52fd36fe07a48a331159ada10391,
+    type: 3}
 --- !u!212 &1580602662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -529,9 +531,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1928648334}
   - component: {fileID: 1928648335}
-  - component: {fileID: 1928648336}
   m_Layer: 0
-  m_Name: Bow
+  m_Name: BowRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,17 +601,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1928648336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928648333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 077bdca21b9bbae43b89dd86d56a2485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 7138808981198237997, guid: b61d52fd36fe07a48a331159ada10391,
-    type: 3}
