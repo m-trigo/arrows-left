@@ -28,6 +28,8 @@ public class Main : MonoBehaviour
     public Sprite arrowCounterPresentSprite;
     public Sprite arrowCounterMissingSprite;
 
+    public GameObject trailGenerator;
+
     #region Enemy Variables
 
     [Range(1, 5)]
@@ -229,6 +231,7 @@ public class Main : MonoBehaviour
         }
 
         knight.transform.Translate( knight.transform.up * dt );
+        trailGenerator.SetActive(true);
 
         AdjustHUD();
     }
