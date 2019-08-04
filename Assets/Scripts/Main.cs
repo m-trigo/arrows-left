@@ -11,6 +11,8 @@ using UnityEngine;
 // Victory screen
 // Defeat screen
 
+// Deployment - Add WebGLTemplate (See Mend)
+// Prepare game's page
 
 // Knight roof marks / trail
 // Shotting "animation" ( shrink circle fast, shoot little arrow, only then grow circle )
@@ -68,7 +70,7 @@ public class Main : MonoBehaviour
     private int arrowsOnKnight;
     private float bowRange;
 
-    private List<GameObject> arrowCounters;
+    private List<GameObject> arrowCounters = new List<GameObject>();
 
     void Start()
     {
@@ -99,7 +101,9 @@ public class Main : MonoBehaviour
 
     private bool startOfTutorial = false;
     private bool endOfTutorial = false;
+    private bool enemyKilled = false;
     private float elapsedSinceLastSpawn = 0;
+    private bool drawing = false;
 
     #region Enemy Functions
 
@@ -137,9 +141,42 @@ public class Main : MonoBehaviour
 
     #region HUD Functions
 
+    private void AdjustHUD()
+    {
+        Vector3 distanceFromCenter = knight.transform.position - transform.position;
+
+        float dx = Mathf.Abs( distanceFromCenter.x ) - cameraThreshold;
+        float dy = Mathf.Abs( distanceFromCenter.y ) - cameraThreshold;
+
+        Vector3 cameraPosition = Camera.main.transform.position;
+
+        if ( dx > 0 )
+        {
+            if ( distanceFromCenter.x < 0 )
+            {
+                dx *= -1;
+            }
+
+            cameraPosition.x = dx;
+            Camera.main.transform.position = cameraPosition;
+        }
+
+        if ( dy > 0 )
+        {
+            if ( distanceFromCenter.y < 0 )
+            {
+                dy *= -1;
+            }
+
+            cameraPosition.y = dy;
+            Camera.main.transform.position = cameraPosition;
+        }
+
+        Camera.main.transform.position = cameraPosition;
+    }
+
     private void CreateArrowsCounters()
     {
-        arrowCounters = new List<GameObject>();
         Vector3 firstArrowPosition = arrowCounterPrefab.transform.position;
         for ( int i = 0; i < maxArrows; i++ )
         {
@@ -179,40 +216,17 @@ public class Main : MonoBehaviour
 
         knight.transform.Translate( knight.transform.up * dt );
 
-        Vector3 distanceFromCenter = knight.transform.position - transform.position;
-
-        float dx = Mathf.Abs( distanceFromCenter.x ) - cameraThreshold;
-        float dy = Mathf.Abs( distanceFromCenter.y ) - cameraThreshold;
-
-        Vector3 cameraPosition = Camera.main.transform.position;
-
-        if ( dx > 0 )
-        {
-            if ( distanceFromCenter.x < 0 )
-            {
-                dx *= -1;
-            }
-
-            cameraPosition.x = dx;
-            Camera.main.transform.position = cameraPosition;
-        }
-
-        if ( dy > 0 )
-        {
-            if ( distanceFromCenter.y < 0 )
-            {
-                dy *= -1;
-            }
-
-            cameraPosition.y = dy;
-            Camera.main.transform.position = cameraPosition;
-        }
-
-        Camera.main.transform.position = cameraPosition;
+        AdjustHUD();
     }
 
     private void KnightAttack()
     {
+        if ( drawing )
+        {
+            DecreaseBowRange();
+            return;
+        }
+
         if ( arrowsOnKnight > 0 )
         {
             if ( !bow.activeSelf )
@@ -240,7 +254,11 @@ public class Main : MonoBehaviour
                 Destroy( arrow );
                 arrowsOnKnight++;
                 ChangeArrowCountersDisplay();
-                endOfTutorial = true;
+
+                if ( enemyKilled )
+                {
+                    endOfTutorial = true;
+                }
             }
         }
     }
@@ -277,6 +295,21 @@ public class Main : MonoBehaviour
         }
     }
 
+    private void DecreaseBowRange()
+    {
+        if ( bowRange > 0 )
+        {
+            bowRange -= Time.smoothDeltaTime * 10;
+            bow.transform.localScale = Vector3.one * ( bowRange / maxBowRange );
+
+            if ( bowRange < 0 )
+            {
+                bowRange = 0;
+                drawing = false;
+            }
+        }
+    }
+
     private bool WithinDistanceOfKnight( GameObject target, float distance )
     {
         float sqrDistanceToTarget = ( target.transform.position - knight.transform.position ).sqrMagnitude;
@@ -292,24 +325,24 @@ public class Main : MonoBehaviour
 
         if ( WithinDistanceOfKnight( target, bowRange ) )
         {
+            drawing = true;
             GameObject arrow = Instantiate( arrowPrefab, transform );
             arrow.transform.position = target.transform.position;
-
-            arrowsOnKnight--;
-
             Destroy( target );
-            bowRange = 0;
+
+            enemyKilled = true;
+            arrowsOnKnight--;
         }
     }
 
     #endregion
 
-    public static List<GameObject> All<T>( Transform transform )
+    public List<GameObject> GameObjectsWithTag( string tag )
     {
         List<GameObject> list = new List<GameObject>();
         foreach ( Transform child in transform )
         {
-            if ( child.gameObject.GetComponent<T>() != null )
+            if ( child.CompareTag( tag ) )
             {
                 list.Add( child.gameObject );
             }
@@ -318,13 +351,13 @@ public class Main : MonoBehaviour
         return list;
     }
 
-    public List<GameObject> Enemies()
-    {
-        return All<Enemy>( transform );
-    }
-
     public List<GameObject> Arrows()
     {
-        return All<Arrow>( transform );
+        return GameObjectsWithTag( "Arrow" );
+    }
+
+    public List<GameObject> Enemies()
+    {
+        return GameObjectsWithTag( "Enemy" );
     }
 }

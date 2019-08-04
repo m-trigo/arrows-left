@@ -448,9 +448,10 @@ MonoBehaviour:
   princess: {fileID: 1608167850}
   knight: {fileID: 1580602659}
   bow: {fileID: 1928648333}
-  arrowCounterPresentSprite: {fileID: 21300000, guid: bec9a06964a15ac4fa59d9c8769cebfd,
+  arrowCounterPresentSprite: {fileID: 21300000, guid: f9f9b2f7ea8df6241b7e9bdc2724c691,
     type: 3}
-  arrowCounterMissingSprite: {fileID: 0}
+  arrowCounterMissingSprite: {fileID: 21300000, guid: bec9a06964a15ac4fa59d9c8769cebfd,
+    type: 3}
   enemySpawnPeriod: 3
   enemySpeed: 1
   secondsToFullRange: 3
