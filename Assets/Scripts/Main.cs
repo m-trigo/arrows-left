@@ -6,7 +6,6 @@ using UnityEngine.UI;
 // Victory screen
 // Defeat screen
 
-// Deployment - Add WebGLTemplate (See Mend)
 // Prepare game's page
 
 public class Main : MonoBehaviour
@@ -79,7 +78,7 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        if ( displayTutorialText && Input.GetKey( KeyCode.Space ) )
+        if ( displayTutorialText && Input.anyKey )
         {
             DestroyTutorialText();
             displayTutorialText = false;
@@ -252,7 +251,7 @@ public class Main : MonoBehaviour
     {
         float dt = Time.smoothDeltaTime;
 
-        if ( Input.GetKey( KeyCode.Space ) )
+        if ( Input.anyKey )
         {
             knight.transform.RotateAround( knight.transform.position, Vector3.forward, turnRatio * dt );
         }

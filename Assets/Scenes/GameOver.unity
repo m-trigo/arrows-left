@@ -622,12 +622,12 @@ PrefabInstance:
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -136.9
+      value: -162.3
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -192
+      value: -170.3
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
@@ -773,7 +773,7 @@ MonoBehaviour:
   secondsToFullRange: 3
   maxBowRange: 2
   maxArrows: 5
-  pickUpRange: 1
+  pickUpRange: 2
   turnRatio: 30
   cameraThreshold: 3
 --- !u!224 &1153775599 stripped
@@ -857,7 +857,7 @@ PrefabInstance:
     - target: {fileID: 1992830679630245731, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: -43.7
       objectReference: {fileID: 0}
     - target: {fileID: 1992830679630245731, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
         type: 3}
@@ -1322,7 +1322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1928648334
 Transform:
   m_ObjectHideFlags: 0
@@ -1456,17 +1456,17 @@ PrefabInstance:
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -136.5
+      value: -262.7
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -209.4
+      value: -214.3
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
@@ -1506,7 +1506,7 @@ PrefabInstance:
     - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_Text
-      value: Hold anything to steer left
+      value: Hold space to turn left
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
@@ -1645,7 +1645,7 @@ PrefabInstance:
     - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
         type: 3}
       propertyPath: m_Text
-      value: Don't let any reach the village
+      value: Don't let them reach the village
       objectReference: {fileID: 0}
     - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
         type: 3}
@@ -2074,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
         type: 3}
       propertyPath: m_Text
-      value: Goblin
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
         type: 3}
