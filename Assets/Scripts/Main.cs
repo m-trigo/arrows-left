@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Show enemies left
-
 // Victory screen
 // Defeat screen
 
 // Deployment - Add WebGLTemplate (See Mend)
 // Prepare game's page
-
-// Knight roof marks / trail
-// Shotting "animation" ( shrink circle fast, shoot little arrow, only then grow circle )
 
 public class Main : MonoBehaviour
 {

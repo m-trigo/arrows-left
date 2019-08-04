@@ -387,7 +387,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31764707, g: 0.5764706, b: 0.23529412, a: 0}
+  m_BackGroundColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -674,6 +674,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: You
       objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d0a884c02fa9e4a853343eba4c3bd1, type: 3}
 --- !u!224 &1043816333 stripped
@@ -888,6 +903,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Protect it
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ca4ef2b88c7b44d97eae8e54fe630a, type: 3}
@@ -1247,6 +1277,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: Ride over to pick up
       objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fef566cf5d00fd4bab0fa21d3724ae2, type: 3}
 --- !u!224 &1712654851 stripped
@@ -1463,6 +1508,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: Hold space to turn left
       objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532987448250667821, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d0a884c02fa9e4a853343eba4c3bd1, type: 3}
 --- !u!1001 &2017663495
@@ -1586,6 +1646,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Don't let them reach the village
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363, type: 3}
@@ -1723,6 +1798,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: Village
       objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992830679630245730, guid: 90ca4ef2b88c7b44d97eae8e54fe630a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ca4ef2b88c7b44d97eae8e54fe630a, type: 3}
 --- !u!1001 &4572635203528955483
@@ -1847,6 +1937,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: Arrows
       objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572635203324509115, guid: 3fef566cf5d00fd4bab0fa21d3724ae2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fef566cf5d00fd4bab0fa21d3724ae2, type: 3}
 --- !u!1001 &6134619616967888582
@@ -1970,6 +2075,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.066037714
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.061365236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134619615823051062, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.061365236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363, type: 3}
