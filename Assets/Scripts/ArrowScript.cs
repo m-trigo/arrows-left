@@ -26,6 +26,6 @@ public class ArrowScript : MonoBehaviour
             Destroy(target);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 15 * Time.smoothDeltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 12 * Time.smoothDeltaTime);
     }
 }

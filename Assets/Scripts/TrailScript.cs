@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class TrailScript : MonoBehaviour
 {
-    public float TTL = 1;
-    public float lifeTime = 0;
-
-    public Sprite large;
-    public Sprite small;
-
-    void Start()
-    {
-        
-    }
+    private float lifeTime = 5f;
 
     void Update()
     {
-        lifeTime += Time.smoothDeltaTime;
-        if ( lifeTime > TTL )
+        lifeTime -= Time.deltaTime;
+        if (lifeTime < 0)
         {
             Destroy(gameObject);
         }
+
+        Color color = transform.GetComponent<SpriteRenderer>().color;
+        color.a = lifeTime / 20;
+        transform.GetComponent<SpriteRenderer>().color = color;
     }
 }

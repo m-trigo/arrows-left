@@ -93,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c098347d2f8099f45af459eae9ca8ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TTL: 1
   lifeTime: 0
-  large: {fileID: 0}
-  small: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 8ef4f8a21424d1d459e853cbdeb7d93a, type: 3}
+  - {fileID: 21300000, guid: dadb608b40b31de4daf13bc891af1934, type: 3}
+  - {fileID: 21300000, guid: 10a0880de8b7b7e4e905389a19690bab, type: 3}
+  - {fileID: 21300000, guid: 4ca3184d8979bbb488059d82fbd0715d, type: 3}
