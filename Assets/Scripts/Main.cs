@@ -6,6 +6,7 @@ public class Main : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public GameObject enemyPrefab;
+    public GameObject arrowCounterPrefab;
 
     public GameObject princess;
     public GameObject knight;
@@ -47,10 +48,13 @@ public class Main : MonoBehaviour
     private int arrowsOnKnight;
     private float bowRange;
 
+    private List<GameObject> arrowCounters;
+
     void Start()
     {
         bowRange = maxBowRange;
         arrowsOnKnight = maxArrows;
+        CreateArrowsCounters();
     }
 
     void Update()
@@ -96,6 +100,33 @@ public class Main : MonoBehaviour
         }
     }
 
+    private void CreateArrowsCounters()
+    {
+        arrowCounters = new List<GameObject>();
+        Vector3 firstArrowPosition = arrowCounterPrefab.transform.position;
+        for ( int i = 0; i < maxArrows; i++ )
+        {
+            GameObject arrowCounter = Instantiate( arrowCounterPrefab, transform );
+            arrowCounter.transform.position = new Vector3( firstArrowPosition.x + (i * 0.2f), firstArrowPosition.y, 0 );
+            arrowCounters.Add( arrowCounter );
+        }
+    }
+
+    private void ChangeArrowCountersDisplay()
+    {
+        for ( int i = 0; i < arrowCounters.Count; i++ )
+        {
+            if ( arrowsOnKnight < (i + 1) )
+            {
+                arrowCounters[i].SetActive( false );
+            }
+            else
+            {
+                arrowCounters[i].SetActive( true );
+            }
+        }
+    }
+
     #region Knight Function
 
     private void KnightMovement()
@@ -122,6 +153,7 @@ public class Main : MonoBehaviour
 
             IncreaseBowRange();
             Shoot( NearestEnemy() );
+            ChangeArrowCountersDisplay();
         }
         else
         {
@@ -137,6 +169,7 @@ public class Main : MonoBehaviour
             {
                 Destroy( arrow );
                 arrowsOnKnight++;
+                ChangeArrowCountersDisplay();
                 endOfTutorial = true;
             }
         }
