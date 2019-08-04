@@ -79,6 +79,16 @@ public class Main : MonoBehaviour
 
     void Update()
     {
+        if ( Input.GetKey( KeyCode.Space ) )
+        {
+            startOfTutorial = true;
+        }
+
+        if ( !startOfTutorial )
+        {
+            return;
+        }
+
         KnightMovement();
         KnightAttack();
         KnightPickup();
@@ -87,6 +97,7 @@ public class Main : MonoBehaviour
         EnemyMovement();
     }
 
+    private bool startOfTutorial = false;
     private bool endOfTutorial = false;
     private float elapsedSinceLastSpawn = 0;
 
