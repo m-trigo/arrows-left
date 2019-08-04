@@ -40,6 +40,9 @@ public class Main : MonoBehaviour
     [Range( 1, 5 )]
     public int enemySpeed = 3;
 
+    [Range(12, 24)]
+    public int totalEnemies = 20;
+
     #endregion
 
     #region Bow Variables
@@ -68,15 +71,10 @@ public class Main : MonoBehaviour
 
     #endregion
 
-    private int arrowsOnKnight;
-    private float bowRange;
-
-    private List<GameObject> arrowCounters = new List<GameObject>();
-
     void Start()
     {
         bowRange = maxBowRange;
-        arrowsOnKnight = maxArrows - 2;
+        arrowsOnKnight = maxArrows - 2; // Two tutorial arrows start on the ground
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
     }
@@ -104,15 +102,22 @@ public class Main : MonoBehaviour
 
     private bool displayTutorialText = true;
     private bool endOfTutorial = false;
-    private bool enemyKilled = false;
+
     private float elapsedSinceLastSpawn = 0;
+    private int totalEnemiesSpawned = 1; // Tutorial enemy starts in the game
+    private int totalEnemiesKilled = 0;
+
     private bool drawing = false;
+    private int arrowsOnKnight;
+    private float bowRange = 0;
+
+    private List<GameObject> arrowCounters = new List<GameObject>();
 
     #region Enemy Functions
 
     private void EnemySpawn()
     {
-        if ( endOfTutorial )
+        if ( endOfTutorial && totalEnemiesSpawned < totalEnemies )
         {
             elapsedSinceLastSpawn += Time.smoothDeltaTime;
             if ( elapsedSinceLastSpawn > enemySpawnPeriod )
@@ -121,6 +126,7 @@ public class Main : MonoBehaviour
                 float angle = Random.Range( 0, 2 * Mathf.PI );
                 GameObject enemy = Instantiate( enemyPrefab, transform );
                 enemy.transform.position = new Vector3( Mathf.Cos( angle ), Mathf.Sin( angle ), 0 ) * 7;
+                totalEnemiesSpawned++;
             }
         }
     }
@@ -267,7 +273,7 @@ public class Main : MonoBehaviour
                 arrowsOnKnight++;
                 ChangeArrowCountersDisplay();
 
-                if ( enemyKilled )
+                if ( totalEnemiesKilled > 0 )
                 {
                     endOfTutorial = true;
                 }
@@ -342,7 +348,7 @@ public class Main : MonoBehaviour
             arrow.transform.position = target.transform.position;
             Destroy( target );
 
-            enemyKilled = true;
+            totalEnemiesKilled++;
             arrowsOnKnight--;
         }
     }

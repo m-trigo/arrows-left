@@ -563,6 +563,7 @@ MonoBehaviour:
     type: 3}
   enemySpawnPeriod: 3
   enemySpeed: 1
+  totalEnemies: 20
   secondsToFullRange: 3
   maxBowRange: 2
   maxArrows: 5
