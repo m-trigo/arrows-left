@@ -20,6 +20,7 @@ public class Main : MonoBehaviour
     public GameObject arrowPrefab;
     public GameObject enemyPrefab;
     public GameObject arrowCounterPrefab;
+    public GameObject enemyCounterPrefab;
 
     public GameObject princess;
     public GameObject knight;
@@ -29,6 +30,8 @@ public class Main : MonoBehaviour
     public Sprite arrowCounterMissingSprite;
 
     public GameObject trailGenerator;
+    public Sprite enemyCounterAliveSprite;
+    public Sprite enemyCounterKilledSprite;
 
     #region Enemy Variables
 
@@ -76,6 +79,7 @@ public class Main : MonoBehaviour
         elapsedSinceLastSpawn = enemySpawnPeriod; // spawn the first at the end of the tutorial;
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
+        CreateEnemyCounters();
     }
 
     void Update()
@@ -110,6 +114,7 @@ public class Main : MonoBehaviour
     private float bowRange = 0;
 
     private List<GameObject> arrowCounters = new List<GameObject>();
+    private List<GameObject> enemyCounters = new List<GameObject>();
 
     #region Enemy Functions
 
@@ -188,7 +193,7 @@ public class Main : MonoBehaviour
         for ( int i = 0; i < maxArrows; i++ )
         {
             GameObject arrowCounter = Instantiate( arrowCounterPrefab, hud.transform );
-            arrowCounter.transform.position = new Vector3( firstArrowPosition.x + (i * 0.2f), firstArrowPosition.y, 0 );
+            arrowCounter.transform.position = new Vector3( firstArrowPosition.x + ( i * 0.2f ), firstArrowPosition.y, 0 );
             arrowCounters.Add( arrowCounter );
         }
     }
@@ -208,12 +213,39 @@ public class Main : MonoBehaviour
         }
     }
 
+    private void CreateEnemyCounters()
+    {
+        Vector3 lastEnemyPosition = enemyCounterPrefab.transform.position;
+        for ( int i = 0; i < totalEnemies; i++ )
+        {
+            GameObject enemyCounter = Instantiate( enemyCounterPrefab, hud.transform );
+            enemyCounter.transform.position = new Vector3( lastEnemyPosition.x - ( i * 0.3f ), lastEnemyPosition.y, 0 );
+            enemyCounters.Add( enemyCounter );
+        }
+        enemyCounters.Reverse();
+    }
+
+    private void ChangeEnemyCountersDisplay()
+    {
+        for ( int i = 0; i < enemyCounters.Count; i++ )
+        {
+            if ( ( i + 1 ) <= totalEnemiesKilled )
+            {
+                enemyCounters[i].GetComponent<SpriteRenderer>().sprite = enemyCounterKilledSprite;
+            }
+            else
+            {
+                enemyCounters[i].GetComponent<SpriteRenderer>().sprite = enemyCounterAliveSprite;
+            }
+        }
+    }
+
     private void DestroyTutorialText()
     {
         Text[] tutorialTextObjects = FindObjectsOfType<Text>();
-        for (int i = 0; i < tutorialTextObjects.Length; i++)
+        for ( int i = 0; i < tutorialTextObjects.Length; i++ )
         {
-            Destroy(tutorialTextObjects[i].gameObject);
+            Destroy( tutorialTextObjects[i].gameObject );
         }
     }
 
@@ -347,6 +379,7 @@ public class Main : MonoBehaviour
             arrowScript.target = target;
 
             totalEnemiesKilled++;
+            ChangeEnemyCountersDisplay();
             arrowsOnKnight--;
         }
     }
