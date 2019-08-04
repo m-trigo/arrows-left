@@ -77,9 +77,13 @@ public class Main : MonoBehaviour
         CreateEnemyCounters();
     }
 
+    private float elapsedTutorial = 0;
+
     void Update()
     {
-        if ( displayTutorialText && Input.anyKey )
+        elapsedTutorial += Time.deltaTime;
+
+        if ( elapsedTutorial > 2 && displayTutorialText && Input.anyKey )
         {
             DestroyTutorialText();
             displayTutorialText = false;

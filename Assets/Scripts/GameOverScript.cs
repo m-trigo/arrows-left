@@ -3,9 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
+    private float elapsed = 0;
+
     void Update()
     {
-        if (Input.anyKey)
+        elapsed += Time.smoothDeltaTime;
+
+        if (elapsed > 1 && Input.anyKey)
         {
             SceneManager.LoadScene("Start");
         }
