@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138808981198237998}
   - component: {fileID: 2807784828698083137}
+  - component: {fileID: 5639227903867641093}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Arrow
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7ea29d9de6e50b74caf72485d33bcb54, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2bac80700eabe404f8f906b7c5553054, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80,3 +81,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5639227903867641093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138808981198237997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b155c6f7873d494eb7b38440092065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  bloody: {fileID: 21300000, guid: cf7e1c60ace0ae945b311fd4f1e110ba, type: 3}

@@ -265,9 +265,12 @@ public class Main : MonoBehaviour
         {
             if ( WithinDistanceOfKnight( arrow, pickUpRange / 10f ) )
             {
-                Destroy( arrow );
-                arrowsOnKnight++;
-                ChangeArrowCountersDisplay();
+                if ( arrow.GetComponent<ArrowScript>().target == null )
+                {
+                    Destroy(arrow);
+                    arrowsOnKnight++;
+                    ChangeArrowCountersDisplay();
+                }
             }
         }
     }
@@ -336,8 +339,9 @@ public class Main : MonoBehaviour
         {
             drawing = true;
             GameObject arrow = Instantiate( arrowPrefab, transform );
-            arrow.transform.position = target.transform.position;
-            Destroy( target );
+            arrow.transform.position = knight.transform.position;
+            ArrowScript arrowScript = arrow.GetComponent<ArrowScript>();
+            arrowScript.target = target;
 
             totalEnemiesKilled++;
             arrowsOnKnight--;
