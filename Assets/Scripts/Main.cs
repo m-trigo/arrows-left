@@ -80,12 +80,12 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        if ( Input.GetKey( KeyCode.Space ) )
+        if ( !startOfTutorial && Input.GetKey( KeyCode.Space ) )
         {
             startOfTutorial = true;
         }
 
-        if ( !startOfTutorial )
+        if ( !startOfTutorial && !endOfTutorial )
         {
             return;
         }
