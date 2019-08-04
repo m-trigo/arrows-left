@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Knight roof marks / trail
 // Show enemies left
-// Show arrows left
+
+// Tutorial
+
 // Add sword
+
 // Victory screen
 // Defeat screen
+
+
+// Knight roof marks / trail
+// Shotting "animation" ( shrink circle fast, shoot little arrow, only then grow circle )
 
 public class Main : MonoBehaviour
 {
@@ -67,7 +73,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         bowRange = maxBowRange;
-        arrowsOnKnight = maxArrows;
+        arrowsOnKnight = maxArrows - 2;
         CreateArrowsCounters();
     }
 
