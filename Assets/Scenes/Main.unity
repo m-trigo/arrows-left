@@ -156,7 +156,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.27612138, g: 0.6886792, b: 0.33415994, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -255,12 +255,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60b853430ba6ac4093f13fc5c105ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  princess: {fileID: 1608167850}
+  arrowPrefab: {fileID: 7138808981198237997, guid: b61d52fd36fe07a48a331159ada10391,
+    type: 3}
   enemyPrefab: {fileID: 8762043060305929198, guid: f6c71fde2f466da4184bab6a046a553d,
     type: 3}
-  endOfTutorial: 0
+  princess: {fileID: 1608167850}
+  knight: {fileID: 1580602659}
+  bow: {fileID: 1928648333}
   enemySpawnPeriod: 3
-  elapsedSinceLastSpawn: 0
+  enemySpeed: 1
+  maxBowRange: 2
+  maxArrows: 5
+  secondsToFullRange: 3
+  pickUpRange: 2
 --- !u!1 &1580602659
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,10 +277,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580602660}
-  - component: {fileID: 1580602661}
   - component: {fileID: 1580602662}
   m_Layer: 0
-  m_Name: Rider
+  m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,22 +300,6 @@ Transform:
   m_Father: {fileID: 1132238823}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1580602661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580602659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0387ef741757d4d46a919273da3a756b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  game: {fileID: 1132238824}
-  bow: {fileID: 1928648333}
-  arrowPrefab: {fileID: 7138808981198237997, guid: b61d52fd36fe07a48a331159ada10391,
-    type: 3}
 --- !u!212 &1580602662
 SpriteRenderer:
   m_ObjectHideFlags: 0
