@@ -108,15 +108,6 @@ public class Main : MonoBehaviour
     private float elapsedSinceLastSpawn = 0;
     private bool drawing = false;
 
-    private void DestroyTutorialText()
-    {
-        Text[] tutorialTextObjects = FindObjectsOfType<Text>();
-        for ( int i = 0; i < tutorialTextObjects.Length; i++ )
-        {
-            Destroy( tutorialTextObjects[i].gameObject );
-        }
-    }
-
     #region Enemy Functions
 
     private void EnemySpawn()
@@ -210,6 +201,15 @@ public class Main : MonoBehaviour
             {
                 arrowCounters[i].GetComponent<SpriteRenderer>().sprite = arrowCounterPresentSprite;
             }
+        }
+    }
+
+    private void DestroyTutorialText()
+    {
+        Text[] tutorialTextObjects = FindObjectsOfType<Text>();
+        for (int i = 0; i < tutorialTextObjects.Length; i++)
+        {
+            Destroy(tutorialTextObjects[i].gameObject);
         }
     }
 
