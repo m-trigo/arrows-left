@@ -36,7 +36,7 @@ public class Main : MonoBehaviour
     [Range( 1, 5 )]
     public int enemySpeed = 3;
 
-    [Range(12, 24)]
+    [Range(1, 24)]
     public int totalEnemies = 20;
 
     #endregion
@@ -78,12 +78,13 @@ public class Main : MonoBehaviour
     }
 
     private float elapsedTutorial = 0;
+    private float elapsedVictory = 0;
 
     void Update()
     {
         elapsedTutorial += Time.deltaTime;
 
-        if ( elapsedTutorial > 2 && displayTutorialText && Input.anyKey )
+        if ( elapsedTutorial > 1 && displayTutorialText && Input.anyKey )
         {
             DestroyTutorialText();
             displayTutorialText = false;
@@ -100,6 +101,15 @@ public class Main : MonoBehaviour
 
         EnemySpawn();
         EnemyMovement();
+
+        if (totalEnemiesKilled >= totalEnemies && Enemies().Count == 0)
+        {
+            elapsedVictory += Time.smoothDeltaTime;
+            if ( elapsedVictory > secondsToFullRange)
+            {
+                SceneManager.LoadScene("Victory");
+            }
+        }
     }
 
     private bool displayTutorialText = true;
