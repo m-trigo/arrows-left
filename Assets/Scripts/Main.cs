@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 // Show enemies left
 
-// Tutorial
-
-// Add sword
-
 // Victory screen
 // Defeat screen
 
