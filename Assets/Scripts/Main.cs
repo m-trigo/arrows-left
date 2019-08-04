@@ -20,6 +20,9 @@ public class Main : MonoBehaviour
     public GameObject knight;
     public GameObject bow;
 
+    public Sprite arrowCounterPresentSprite;
+    public Sprite arrowCounterMissingSprite;
+
     #region Enemy Variables
 
     [Range(1, 5)]
@@ -135,11 +138,11 @@ public class Main : MonoBehaviour
         {
             if ( arrowsOnKnight < (i + 1) )
             {
-                arrowCounters[i].SetActive( false );
+                arrowCounters[i].GetComponent<SpriteRenderer>().sprite = arrowCounterMissingSprite;
             }
             else
             {
-                arrowCounters[i].SetActive( true );
+                arrowCounters[i].GetComponent<SpriteRenderer>().sprite = arrowCounterPresentSprite;
             }
         }
     }
