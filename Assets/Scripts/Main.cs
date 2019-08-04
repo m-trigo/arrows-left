@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Show enemies left
 
@@ -80,12 +81,13 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        if ( !startOfTutorial && Input.GetKey( KeyCode.Space ) )
+        if ( displayTutorialText && Input.GetKey( KeyCode.Space ) )
         {
-            startOfTutorial = true;
+            DestroyTutorialText();
+            displayTutorialText = false;
         }
 
-        if ( !startOfTutorial && !endOfTutorial )
+        if ( displayTutorialText )
         {
             return;
         }
@@ -98,9 +100,19 @@ public class Main : MonoBehaviour
         EnemyMovement();
     }
 
-    private bool startOfTutorial = false;
+    private bool displayTutorialText = true;
     private bool endOfTutorial = false;
+
     private float elapsedSinceLastSpawn = 0;
+
+    private void DestroyTutorialText()
+    {
+        Text[] tutorialTextObjects = FindObjectsOfType<Text>();
+        for ( int i = 0; i < tutorialTextObjects.Length; i++ )
+        {
+            Destroy( tutorialTextObjects[i].gameObject );
+        }
+    }
 
     #region Enemy Functions
 
