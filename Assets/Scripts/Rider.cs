@@ -6,7 +6,7 @@ public class Rider : MonoBehaviour
 {
 
     public Main game;
-    public GameObject bowRangeSprite;
+    public GameObject bow;
     public GameObject arrowPrefab;
 
     void Awake()
@@ -20,8 +20,18 @@ public class Rider : MonoBehaviour
 
         if ( arrows > 0 )
         {
+            if ( !bow.activeSelf )
+            {
+                bow.SetActive( true );
+                bowRange = 0;
+            }
+
             IncreaseBowRange();
             Shoot( NearestEnemy() );
+        }
+        else
+        {
+            bow.SetActive( false );
         }
 
         foreach( GameObject arrow in game.Arrows() )
@@ -30,20 +40,16 @@ public class Rider : MonoBehaviour
             {
                 Destroy( arrow );
                 arrows++;
+                game.endOfTutorial = true;
             }
         }
-
-        // pickup routine
-        // first arrows
-        // then bow
-        // then sword
     }
 
     private const int ANTICLOCKWISE_TURN_RATIO = 30;
 
     private const float MAX_BOW_RANGE = 2f;
 
-    private const float PICK_UP_RANGE = 0.1f;
+    private const float PICK_UP_RANGE = 0.2f;
     private const int SECONDS_TO_FULL_RANGE = 3;
     private const int MAX_ARROWS = 5;
     private int arrows = MAX_ARROWS;
@@ -73,7 +79,7 @@ public class Rider : MonoBehaviour
             }
 
             float distanceToEnemy = ( enemy.transform.position - transform.position ).sqrMagnitude;
-            float distanceToNearest = ( enemy.transform.position - transform.position ).sqrMagnitude;
+            float distanceToNearest = ( nearest.transform.position - transform.position ).sqrMagnitude;
 
             if ( distanceToEnemy < distanceToNearest )
             {
@@ -89,7 +95,7 @@ public class Rider : MonoBehaviour
         if ( bowRange < MAX_BOW_RANGE )
         {
             bowRange += MAX_BOW_RANGE * Time.smoothDeltaTime / SECONDS_TO_FULL_RANGE;
-            transform.localScale = Vector3.one * ( bowRange / MAX_BOW_RANGE );
+            bow.transform.localScale = Vector3.one * ( bowRange / MAX_BOW_RANGE );
         }
     }
 
