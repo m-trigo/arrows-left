@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // Victory screen
 // Defeat screen
@@ -135,7 +136,7 @@ public class Main : MonoBehaviour
             Vector2 vectorToPrincess = princess.transform.position - enemy.transform.position;
             if ( vectorToPrincess.magnitude < 0.1f )
             {
-                Debug.Log( "Game Over!" );
+                SceneManager.LoadScene("GameOver");
             }
 
             vectorToPrincess.Normalize();
