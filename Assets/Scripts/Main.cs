@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Show enemies left
 
@@ -77,16 +78,18 @@ public class Main : MonoBehaviour
         bowRange = maxBowRange;
         arrowsOnKnight = maxArrows - 2;
         CreateArrowsCounters();
+        ChangeArrowCountersDisplay();
     }
 
     void Update()
     {
-        if ( Input.GetKey( KeyCode.Space ) )
+        if ( displayTutorialText && Input.GetKey( KeyCode.Space ) )
         {
-            startOfTutorial = true;
+            DestroyTutorialText();
+            displayTutorialText = false;
         }
 
-        if ( !startOfTutorial )
+        if ( displayTutorialText )
         {
             return;
         }
@@ -99,11 +102,20 @@ public class Main : MonoBehaviour
         EnemyMovement();
     }
 
-    private bool startOfTutorial = false;
+    private bool displayTutorialText = true;
     private bool endOfTutorial = false;
     private bool enemyKilled = false;
     private float elapsedSinceLastSpawn = 0;
     private bool drawing = false;
+
+    private void DestroyTutorialText()
+    {
+        Text[] tutorialTextObjects = FindObjectsOfType<Text>();
+        for ( int i = 0; i < tutorialTextObjects.Length; i++ )
+        {
+            Destroy( tutorialTextObjects[i].gameObject );
+        }
+    }
 
     #region Enemy Functions
 
