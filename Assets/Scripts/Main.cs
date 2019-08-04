@@ -75,6 +75,7 @@ public class Main : MonoBehaviour
     {
         bowRange = maxBowRange;
         arrowsOnKnight = maxArrows - 2; // Two tutorial arrows start on the ground
+        elapsedSinceLastSpawn = enemySpawnPeriod; // spawn the first at the end of the tutorial;
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
         CreateEnemyCounters();
@@ -102,9 +103,8 @@ public class Main : MonoBehaviour
     }
 
     private bool displayTutorialText = true;
-    private bool endOfTutorial = false;
 
-    private float elapsedSinceLastSpawn = 0;
+    private float elapsedSinceLastSpawn;
     private int totalEnemiesSpawned = 1; // Tutorial enemy starts in the game
     private int totalEnemiesKilled = 0;
 
@@ -119,7 +119,7 @@ public class Main : MonoBehaviour
 
     private void EnemySpawn()
     {
-        if ( endOfTutorial && totalEnemiesSpawned < totalEnemies )
+        if ( totalEnemiesKilled > 0 && totalEnemiesSpawned < totalEnemies )
         {
             elapsedSinceLastSpawn += Time.smoothDeltaTime;
             if ( elapsedSinceLastSpawn > enemySpawnPeriod )
@@ -301,11 +301,6 @@ public class Main : MonoBehaviour
                 Destroy( arrow );
                 arrowsOnKnight++;
                 ChangeArrowCountersDisplay();
-
-                if ( totalEnemiesKilled > 0 )
-                {
-                    endOfTutorial = true;
-                }
             }
         }
     }
