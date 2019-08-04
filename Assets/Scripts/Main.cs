@@ -4,29 +4,69 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    public GameObject princess;
+    public GameObject arrowPrefab;
     public GameObject enemyPrefab;
 
-    public bool endOfTutorial = true;
+    public GameObject princess;
+    public GameObject knight;
+    public GameObject bow;
+
+    #region Enemy Variables
 
     [Range(1, 5)]
     public int enemySpawnPeriod = 3;
 
-    public float pickUpRange = 0.2f;
+    [Range( 1, 5 )]
+    public int enemySpeed = 3;
+
+    #endregion
+
+    #region Bow Variables
+
+    [Range( 1, 5 )]
+    public int secondsToFullRange = 3;
+
+    [Range(0.5f, 3f)]
+    public float maxBowRange = 2f;
+
+    [Range(1, 10)]
+    public int maxArrows = 5;
+
+    #endregion
+
+    #region Knight Variables
+
+    [Range(1, 3)]
+    public int pickUpRange;
+
+    [Range(15, 45)]
+    private int turnRatio = 30;
+
+    #endregion
+
+    private int arrowsOnKnight;
+    private float bowRange;
 
     void Start()
     {
-
+        bowRange = maxBowRange;
+        arrowsOnKnight = maxArrows;
     }
 
     void Update()
     {
-        Spawn();
+        KnightMovement();
+        KnightAttack();
+        KnightPickup();
+
+        EnemySpawn();
+        EnemyMovement();
     }
 
+    private bool endOfTutorial = false;
     private float elapsedSinceLastSpawn = 0;
 
-    private void Spawn()
+    private void EnemySpawn()
     {
         if ( endOfTutorial )
         {
@@ -40,6 +80,126 @@ public class Main : MonoBehaviour
             }
         }
     }
+
+    private void EnemyMovement()
+    {
+        foreach( GameObject enemy in Enemies() )
+        {
+            Vector2 vectorToPrincess = princess.transform.position - enemy.transform.position;
+            if ( vectorToPrincess.magnitude < 0.1f )
+            {
+                Debug.Log( "Game Over!" );
+            }
+
+            vectorToPrincess.Normalize();
+            enemy.transform.Translate( enemySpeed * vectorToPrincess * Time.smoothDeltaTime / 5 );
+        }
+    }
+
+    #region Knight Function
+
+    private void KnightMovement()
+    {
+        float dt = Time.smoothDeltaTime;
+
+        if ( Input.GetKey( KeyCode.Space ) )
+        {
+            knight.transform.RotateAround( knight.transform.position, Vector3.forward, turnRatio * dt );
+        }
+
+        knight.transform.Translate( knight.transform.up * dt );
+    }
+
+    private void KnightAttack()
+    {
+        if ( arrowsOnKnight > 0 )
+        {
+            if ( !bow.activeSelf )
+            {
+                bow.SetActive( true );
+                bowRange = 0;
+            }
+
+            IncreaseBowRange();
+            Shoot( NearestEnemy() );
+        }
+        else
+        {
+            bow.SetActive( false );
+        }
+    }
+
+    private void KnightPickup()
+    {
+        foreach ( GameObject arrow in Arrows() )
+        {
+            if ( WithinDistanceOfKnight( arrow, pickUpRange / 10f ) )
+            {
+                Destroy( arrow );
+                arrowsOnKnight++;
+                endOfTutorial = true;
+            }
+        }
+    }
+
+    private GameObject NearestEnemy()
+    {
+        GameObject nearest = null;
+        foreach ( GameObject enemy in Enemies() )
+        {
+            if ( nearest == null )
+            {
+                nearest = enemy;
+                continue;
+            }
+
+            float distanceToEnemy = ( enemy.transform.position - knight.transform.position ).sqrMagnitude;
+            float distanceToNearest = ( nearest.transform.position - knight.transform.position ).sqrMagnitude;
+
+            if ( distanceToEnemy < distanceToNearest )
+            {
+                nearest = enemy;
+            }
+        }
+
+        return nearest;
+    }
+
+    private void IncreaseBowRange()
+    {
+        if ( bowRange < maxBowRange )
+        {
+            bowRange += maxBowRange * Time.smoothDeltaTime / secondsToFullRange;
+            bow.transform.localScale = Vector3.one * ( bowRange / maxBowRange );
+        }
+    }
+
+    private bool WithinDistanceOfKnight( GameObject target, float distance )
+    {
+        float sqrDistanceToTarget = ( target.transform.position - knight.transform.position ).sqrMagnitude;
+        return sqrDistanceToTarget < ( distance * distance );
+    }
+
+    private void Shoot( GameObject target )
+    {
+        if ( target == null )
+        {
+            return;
+        }
+
+        if ( WithinDistanceOfKnight( target, bowRange ) )
+        {
+            GameObject arrow = Instantiate( arrowPrefab, transform );
+            arrow.transform.position = target.transform.position;
+
+            arrowsOnKnight--;
+
+            Destroy( target );
+            bowRange = 0;
+        }
+    }
+
+    #endregion
 
     public static List<GameObject> All<T>( Transform transform )
     {
