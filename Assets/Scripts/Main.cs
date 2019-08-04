@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Knight roof marks / trail
+// Show enemies left
+// Show arrows left
+// Add sword
+// Victory screen
+// Defeat screen
+
 public class Main : MonoBehaviour
 {
+    public GameObject hud;
     public GameObject arrowPrefab;
     public GameObject enemyPrefab;
     public GameObject arrowCounterPrefab;
@@ -41,7 +49,10 @@ public class Main : MonoBehaviour
     public int pickUpRange;
 
     [Range(15, 45)]
-    private int turnRatio = 30;
+    public int turnRatio = 30;
+
+    [Range( 3, 5 )]
+    public int cameraThreshold = 4;
 
     #endregion
 
@@ -69,6 +80,8 @@ public class Main : MonoBehaviour
 
     private bool endOfTutorial = false;
     private float elapsedSinceLastSpawn = 0;
+
+    #region Enemy Functions
 
     private void EnemySpawn()
     {
@@ -100,13 +113,17 @@ public class Main : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region HUD Functions
+
     private void CreateArrowsCounters()
     {
         arrowCounters = new List<GameObject>();
         Vector3 firstArrowPosition = arrowCounterPrefab.transform.position;
         for ( int i = 0; i < maxArrows; i++ )
         {
-            GameObject arrowCounter = Instantiate( arrowCounterPrefab, transform );
+            GameObject arrowCounter = Instantiate( arrowCounterPrefab, hud.transform );
             arrowCounter.transform.position = new Vector3( firstArrowPosition.x + (i * 0.2f), firstArrowPosition.y, 0 );
             arrowCounters.Add( arrowCounter );
         }
@@ -127,7 +144,9 @@ public class Main : MonoBehaviour
         }
     }
 
-    #region Knight Function
+    #endregion
+
+    #region Knight Functions
 
     private void KnightMovement()
     {
@@ -139,6 +158,37 @@ public class Main : MonoBehaviour
         }
 
         knight.transform.Translate( knight.transform.up * dt );
+
+        Vector3 distanceFromCenter = knight.transform.position - transform.position;
+
+        float dx = Mathf.Abs( distanceFromCenter.x ) - cameraThreshold;
+        float dy = Mathf.Abs( distanceFromCenter.y ) - cameraThreshold;
+
+        Vector3 cameraPosition = Camera.main.transform.position;
+
+        if ( dx > 0 )
+        {
+            if ( distanceFromCenter.x < 0 )
+            {
+                dx *= -1;
+            }
+
+            cameraPosition.x = dx;
+            Camera.main.transform.position = cameraPosition;
+        }
+
+        if ( dy > 0 )
+        {
+            if ( distanceFromCenter.y < 0 )
+            {
+                dy *= -1;
+            }
+
+            cameraPosition.y = dy;
+            Camera.main.transform.position = cameraPosition;
+        }
+
+        Camera.main.transform.position = cameraPosition;
     }
 
     private void KnightAttack()

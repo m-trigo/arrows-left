@@ -199,8 +199,39 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 861922972}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &861922971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861922972}
+  m_Layer: 0
+  m_Name: HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &861922972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861922971}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &880052502 stripped
@@ -255,19 +286,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60b853430ba6ac4093f13fc5c105ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hud: {fileID: 861922971}
   arrowPrefab: {fileID: 7138808981198237997, guid: b61d52fd36fe07a48a331159ada10391,
     type: 3}
   enemyPrefab: {fileID: 8762043060305929198, guid: f6c71fde2f466da4184bab6a046a553d,
+    type: 3}
+  arrowCounterPrefab: {fileID: 2667873644763649230, guid: 7275f2d784deafc428423836033541f8,
     type: 3}
   princess: {fileID: 1608167850}
   knight: {fileID: 1580602659}
   bow: {fileID: 1928648333}
   enemySpawnPeriod: 3
   enemySpeed: 1
+  secondsToFullRange: 3
   maxBowRange: 2
   maxArrows: 5
-  secondsToFullRange: 3
   pickUpRange: 2
+  turnRatio: 30
+  cameraThreshold: 3
 --- !u!1 &1580602659
 GameObject:
   m_ObjectHideFlags: 0
