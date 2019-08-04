@@ -75,6 +75,7 @@ public class Main : MonoBehaviour
         bowRange = maxBowRange;
         arrowsOnKnight = maxArrows - 2;
         CreateArrowsCounters();
+        ChangeArrowCountersDisplay();
     }
 
     void Update()
