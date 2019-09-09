@@ -60,10 +60,10 @@ public class Main : MonoBehaviour
     public int pickUpRange;
 
     [Range(15, 45)]
-    public int turnRatio = 30;
+    public int turnRatio;
 
-    [Range( 3, 5 )]
-    public int cameraThreshold = 4;
+    [Range( 1, 5 )]
+    public int cameraThreshold;
 
     #endregion
 

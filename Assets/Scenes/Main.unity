@@ -622,12 +622,12 @@ PrefabInstance:
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -136.9
+      value: -136.5
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -192
+      value: -180.5
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
@@ -773,9 +773,9 @@ MonoBehaviour:
   secondsToFullRange: 3
   maxBowRange: 2
   maxArrows: 5
-  pickUpRange: 1
+  pickUpRange: 2
   turnRatio: 30
-  cameraThreshold: 3
+  cameraThreshold: 2
 --- !u!224 &1153775599 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6134619615823051049, guid: 321ee90e3fe8a3d46bedf4fb3a4ff363,
@@ -1018,7 +1018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580602659}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -2.05, y: -2.41, z: 0}
+  m_LocalPosition: {x: -2, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1928648334}
@@ -1461,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -209.4
+      value: -198.5
       objectReference: {fileID: 0}
     - target: {fileID: 4532987448250667820, guid: 45d0a884c02fa9e4a853343eba4c3bd1,
         type: 3}
