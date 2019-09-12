@@ -27,13 +27,13 @@ public class Main : MonoBehaviour
 
     #region Enemy Variables
 
-    [Range(1, 5)]
+    [Range( 1, 5 )]
     public int enemySpawnPeriod = 3;
 
     [Range( 1, 5 )]
     public int enemySpeed = 3;
 
-    [Range(1, 24)]
+    [Range( 1, 24 )]
     public int totalEnemies = 20;
 
     #endregion
@@ -43,20 +43,20 @@ public class Main : MonoBehaviour
     [Range( 1, 5 )]
     public int secondsToFullRange = 3;
 
-    [Range(0.5f, 3f)]
+    [Range( 0.5f, 3f )]
     public float maxBowRange = 2f;
 
-    [Range(1, 10)]
+    [Range( 1, 10 )]
     public int maxArrows = 5;
 
     #endregion
 
     #region Knight Variables
 
-    [Range(1, 3)]
+    [Range( 1, 3 )]
     public float pickUpRange;
 
-    [Range(15, 45)]
+    [Range( 15, 45 )]
     public float turnRatio;
 
     [Range( 1, 5 )]
@@ -93,7 +93,7 @@ public class Main : MonoBehaviour
             return;
         }
 
-        if ( Input.GetKeyDown(KeyCode.R ) )
+        if ( Input.GetKeyDown( KeyCode.R ) )
         {
             SceneManager.LoadScene( "Main" );
         }
@@ -111,12 +111,12 @@ public class Main : MonoBehaviour
         EnemySpawn();
         EnemyMovement();
 
-        if (totalEnemiesKilled >= totalEnemies && Enemies().Count == 0)
+        if ( totalEnemiesKilled >= totalEnemies && Enemies().Count == 0 )
         {
             elapsedVictory += Time.smoothDeltaTime;
-            if ( elapsedVictory > secondsToFullRange)
+            if ( elapsedVictory > secondsToFullRange )
             {
-                SceneManager.LoadScene("Victory");
+                SceneManager.LoadScene( "Victory" );
             }
         }
     }
@@ -155,12 +155,12 @@ public class Main : MonoBehaviour
 
     private void EnemyMovement()
     {
-        foreach( GameObject enemy in Enemies() )
+        foreach ( GameObject enemy in Enemies() )
         {
             Vector2 vectorToPrincess = princess.transform.position - enemy.transform.position;
             if ( vectorToPrincess.magnitude < 0.1f )
             {
-                SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene( "GameOver" );
             }
 
             vectorToPrincess.Normalize();
@@ -250,11 +250,11 @@ public class Main : MonoBehaviour
         {
             if ( ( i + 1 ) <= totalEnemiesKilled )
             {
-                enemyCounters[i].GetComponent<SpriteRenderer>().sprite = enemyCounterKilledSprite;
+                enemyCounters[ i ].GetComponent<SpriteRenderer>().sprite = enemyCounterKilledSprite;
             }
             else
             {
-                enemyCounters[i].GetComponent<SpriteRenderer>().sprite = enemyCounterAliveSprite;
+                enemyCounters[ i ].GetComponent<SpriteRenderer>().sprite = enemyCounterAliveSprite;
             }
         }
     }
@@ -273,7 +273,7 @@ public class Main : MonoBehaviour
         }
 
         knight.transform.Translate( knight.transform.up * dt );
-        trailGenerator.SetActive(true);
+        trailGenerator.SetActive( true );
 
         AdjustHUD();
     }
@@ -312,7 +312,7 @@ public class Main : MonoBehaviour
             {
                 if ( arrow.GetComponent<ArrowScript>().target == null )
                 {
-                    Destroy(arrow);
+                    Destroy( arrow );
                     arrowsOnKnight++;
                     ChangeArrowCountersDisplay();
                 }
