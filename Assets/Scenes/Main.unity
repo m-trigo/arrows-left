@@ -433,8 +433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sections:
   - Hold any button to turn left
-  - Stop any <#00a826>Goblins</color> from reaching the <#0091ec>village</color>
   - Ride over <#c30039>arrows</color> to pick them up
+  - Stop any <#00a826>Goblins</color> from reaching the <#0091ec>village</color>
   fadeTime: 1
   timeout: 5
   started: 0
@@ -793,12 +793,12 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
@@ -1279,12 +1279,12 @@ PrefabInstance:
     - target: {fileID: 8762043060305929197, guid: f6c71fde2f466da4184bab6a046a553d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.06
+      value: -5.1
       objectReference: {fileID: 0}
     - target: {fileID: 8762043060305929197, guid: f6c71fde2f466da4184bab6a046a553d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.03
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 8762043060305929197, guid: f6c71fde2f466da4184bab6a046a553d,
         type: 3}
