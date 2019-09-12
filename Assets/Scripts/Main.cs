@@ -4,11 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// Victory screen
-// Defeat screen
-
-// Prepare game's page
-
 public class Main : MonoBehaviour
 {
     public GameObject hud;
@@ -27,6 +22,8 @@ public class Main : MonoBehaviour
     public GameObject trailGenerator;
     public Sprite enemyCounterAliveSprite;
     public Sprite enemyCounterKilledSprite;
+
+    public Tutorial tutorial;
 
     #region Enemy Variables
 
@@ -57,42 +54,54 @@ public class Main : MonoBehaviour
     #region Knight Variables
 
     [Range(1, 3)]
-    public int pickUpRange;
+    public float pickUpRange;
 
     [Range(15, 45)]
-    public int turnRatio;
+    public float turnRatio;
 
     [Range( 1, 5 )]
-    public int cameraThreshold;
+    public float cameraThreshold;
 
     #endregion
 
     void Start()
     {
         bowRange = maxBowRange;
-        arrowsOnKnight = maxArrows - 2; // Two tutorial arrows start on the ground
+        arrowsOnKnight = maxArrows - Arrows().Count;
         elapsedSinceLastSpawn = enemySpawnPeriod; // spawn the first at the end of the tutorial;
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
         CreateEnemyCounters();
     }
 
-    private float elapsedTutorial = 0;
     private float elapsedVictory = 0;
+
+    private bool HasInput()
+    {
+        return Input.anyKey;
+    }
 
     void Update()
     {
-        elapsedTutorial += Time.deltaTime;
-
-        if ( elapsedTutorial > 1 && displayTutorialText && Input.anyKey )
+        if ( notStarted && HasInput() )
         {
-            DestroyTutorialText();
-            displayTutorialText = false;
+            notStarted = false;
         }
 
-        if ( displayTutorialText )
+        if ( notStarted )
         {
             return;
+        }
+
+        if ( Input.GetKeyDown(KeyCode.R ) )
+        {
+            SceneManager.LoadScene( "Main" );
+        }
+
+        if ( !tutorialOver )
+        {
+            tutorial.started = true;
+            tutorialOver = true;
         }
 
         KnightMovement();
@@ -112,7 +121,8 @@ public class Main : MonoBehaviour
         }
     }
 
-    private bool displayTutorialText = true;
+    private bool notStarted = true;
+    private bool tutorialOver = false;
 
     private float elapsedSinceLastSpawn;
     private int totalEnemiesSpawned = 1; // Tutorial enemy starts in the game
@@ -249,15 +259,6 @@ public class Main : MonoBehaviour
         }
     }
 
-    private void DestroyTutorialText()
-    {
-        Text[] tutorialTextObjects = FindObjectsOfType<Text>();
-        for ( int i = 0; i < tutorialTextObjects.Length; i++ )
-        {
-            Destroy( tutorialTextObjects[i].gameObject );
-        }
-    }
-
     #endregion
 
     #region Knight Functions
@@ -266,7 +267,7 @@ public class Main : MonoBehaviour
     {
         float dt = Time.smoothDeltaTime;
 
-        if ( Input.anyKey )
+        if ( HasInput() )
         {
             knight.transform.RotateAround( knight.transform.position, Vector3.forward, turnRatio * dt );
         }
