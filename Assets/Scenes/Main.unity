@@ -433,8 +433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sections:
   - Hold any button to turn left
-  - Stop any <#387E08>Goblins</color> from reaching the <#996644>village</color>
-  - Ride over <#DB1A18>arrows</color> to pick them up
+  - Stop any <#00a826>Goblins</color> from reaching the <#0091ec>village</color>
+  - Ride over <#c30039>arrows</color> to pick them up
   fadeTime: 1
   timeout: 5
   started: 0
@@ -1192,8 +1192,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
