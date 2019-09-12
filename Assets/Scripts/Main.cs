@@ -75,6 +75,7 @@ public class Main : MonoBehaviour
     }
 
     private float elapsedVictory = 0;
+    private float elapsedStart = 0;
 
     private bool HasInput()
     {
@@ -85,7 +86,12 @@ public class Main : MonoBehaviour
     {
         if ( notStarted && HasInput() )
         {
-            notStarted = false;
+            elapsedStart += Time.deltaTime;
+
+            if ( elapsedStart > 0.2 )
+            {
+                notStarted = false;
+            }
         }
 
         if ( notStarted )
