@@ -9,9 +9,9 @@ public class StartMenuScript : MonoBehaviour
     {
         elapsed += Time.smoothDeltaTime;
 
-        if (elapsed > 0.4f && Input.anyKey)
+        if ( elapsed > 0.4f && Input.anyKey )
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene( "Main" );
         }
     }
 }

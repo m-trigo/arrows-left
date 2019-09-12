@@ -9,7 +9,7 @@ public class VictoryScript : MonoBehaviour
     {
         elapsed += Time.smoothDeltaTime;
 
-        if ( elapsed > 10f || ( elapsed > 0.5f && Input.anyKey && elapsed > 10f ) )
+        if ( elapsed > 10f || ( elapsed > 0.5f && Input.anyKey ) )
         {
             SceneManager.LoadScene( "Start" );
         }
