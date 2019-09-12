@@ -208,7 +208,10 @@ public class Main : MonoBehaviour
 
     private void CreateArrowsCounters()
     {
-        Vector3 firstArrowPosition = arrowCounterPrefab.transform.position;
+        float y = Camera.main.orthographicSize;
+        float x = -Camera.main.orthographicSize * Camera.main.aspect;
+
+        Vector3 firstArrowPosition = new Vector2( x + 0.5f, y - 0.5f );
         for ( int i = 0; i < maxArrows; i++ )
         {
             GameObject arrowCounter = Instantiate( arrowCounterPrefab, hud.transform );
@@ -221,20 +224,23 @@ public class Main : MonoBehaviour
     {
         for ( int i = 0; i < arrowCounters.Count; i++ )
         {
-            if ( arrowsOnKnight < (i + 1) )
+            if ( arrowsOnKnight < ( i + 1 ) )
             {
-                arrowCounters[i].GetComponent<SpriteRenderer>().sprite = arrowCounterMissingSprite;
+                arrowCounters[ i ].GetComponent<SpriteRenderer>().sprite = arrowCounterMissingSprite;
             }
             else
             {
-                arrowCounters[i].GetComponent<SpriteRenderer>().sprite = arrowCounterPresentSprite;
+                arrowCounters[ i ].GetComponent<SpriteRenderer>().sprite = arrowCounterPresentSprite;
             }
         }
     }
 
     private void CreateEnemyCounters()
     {
-        Vector3 lastEnemyPosition = enemyCounterPrefab.transform.position;
+        float y = Camera.main.orthographicSize;
+        float x = Camera.main.orthographicSize * Camera.main.aspect;
+
+        Vector3 lastEnemyPosition = new Vector2( x - 0.5f, y - 0.5f );
         for ( int i = 0; i < totalEnemies; i++ )
         {
             GameObject enemyCounter = Instantiate( enemyCounterPrefab, hud.transform );
