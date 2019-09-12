@@ -217,11 +217,11 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = -Camera.main.orthographicSize * Camera.main.aspect;
 
-        Vector3 firstArrowPosition = new Vector2( x + 0.5f, y - 0.5f );
+        Vector3 firstArrowPosition = new Vector2( x + 1 / 2f, y - 1 / 2f );
         for ( int i = 0; i < maxArrows; i++ )
         {
             GameObject arrowCounter = Instantiate( arrowCounterPrefab, hud.transform );
-            arrowCounter.transform.position = new Vector3( firstArrowPosition.x + ( i * 0.2f ), firstArrowPosition.y, 0 );
+            arrowCounter.transform.position = new Vector3( firstArrowPosition.x + ( i / 4f + i / 8f ), firstArrowPosition.y, 0 );
             arrowCounters.Add( arrowCounter );
         }
     }
@@ -246,11 +246,11 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = Camera.main.orthographicSize * Camera.main.aspect;
 
-        Vector3 lastEnemyPosition = new Vector2( x - 0.5f, y - 0.5f );
+        Vector3 lastEnemyPosition = new Vector2( x - 1 / 2f, y - 1 / 2f );
         for ( int i = 0; i < totalEnemies; i++ )
         {
             GameObject enemyCounter = Instantiate( enemyCounterPrefab, hud.transform );
-            enemyCounter.transform.position = new Vector3( lastEnemyPosition.x - ( i * 0.3f ), lastEnemyPosition.y, 0 );
+            enemyCounter.transform.position = new Vector3( lastEnemyPosition.x - ( i / 4f + i / 8f ), lastEnemyPosition.y, 0 );
             enemyCounters.Add( enemyCounter );
         }
         enemyCounters.Reverse();
@@ -360,7 +360,22 @@ public class Main : MonoBehaviour
         if ( bowRange < maxBowRange )
         {
             bowRange += maxBowRange * Time.smoothDeltaTime / secondsToFullRange;
-            bow.transform.localScale = Vector3.one * ( bowRange / maxBowRange );
+            Vector3 scale = Vector3.one * ( bowRange / maxBowRange );
+
+            if ( scale.x > 1 )
+            {
+                scale.x = 1;
+            }
+            if ( scale.y > 1 )
+            {
+                scale.y = 1;
+            }
+            if ( scale.z > 1 )
+            {
+                scale.z = 1;
+            }
+
+            bow.transform.localScale = scale;
         }
     }
 
