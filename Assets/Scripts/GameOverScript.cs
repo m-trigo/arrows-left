@@ -9,7 +9,7 @@ public class GameOverScript : MonoBehaviour
     {
         elapsed += Time.smoothDeltaTime;
 
-        if ( elapsed > 10f || Input.anyKeyDown )
+        if ( elapsed > 10f || ( Input.anyKeyDown && elapsed > 1 ) )
         {
             SceneManager.LoadScene( "Title" );
         }

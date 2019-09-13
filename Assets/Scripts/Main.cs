@@ -85,32 +85,6 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        if ( notStarted && HasInput() )
-        {
-            elapsedStart += Time.deltaTime;
-
-            if ( elapsedStart > 0.2 )
-            {
-                notStarted = false;
-            }
-        }
-
-        if ( notStarted )
-        {
-            return;
-        }
-
-        if ( Input.GetKeyDown( KeyCode.R ) )
-        {
-            SceneManager.LoadScene( "Main" );
-        }
-
-        if ( !tutorialOver )
-        {
-            tutorial.started = true;
-            tutorialOver = true;
-        }
-
         KnightMovement();
         KnightAttack();
         KnightPickup();
@@ -126,9 +100,6 @@ public class Main : MonoBehaviour
             }
         }
     }
-
-    private bool notStarted = true;
-    private bool tutorialOver = false;
 
     private float elapsedSinceLastSpawn;
     private int totalEnemiesSpawned = 1; // Tutorial enemy starts in the game

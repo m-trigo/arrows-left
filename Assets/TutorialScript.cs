@@ -11,13 +11,13 @@ public class TutorialScript : MonoBehaviour
     {
         elapsed += Time.smoothDeltaTime;
 
-        if (elapsed > 60)
+        if ( elapsed > 60 )
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene( "Title" );
         }
-        else if (Input.anyKeyDown)
+        else if ( Input.anyKeyDown && elapsed > 0.4f )
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene( "Main" );
         }
     }
 }
