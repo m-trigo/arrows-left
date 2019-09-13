@@ -724,7 +724,7 @@ MonoBehaviour:
     type: 3}
   enemyCounterPrefab: {fileID: 7927660279672668680, guid: 36a09f693eca4fe4a977a496125d80ea,
     type: 3}
-  princess: {fileID: 1608167850}
+  village: {fileID: 1608167850}
   knight: {fileID: 1580602659}
   bow: {fileID: 1928648333}
   arrowCounterPresentSprite: {fileID: 21300000, guid: cdbfcd93aa041f14285ea0ee9f8c4fc8,
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 1608167851}
   - component: {fileID: 1608167852}
   m_Layer: 0
-  m_Name: Princess
+  m_Name: Village
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

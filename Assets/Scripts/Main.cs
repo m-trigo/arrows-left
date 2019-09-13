@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     public GameObject arrowCounterPrefab;
     public GameObject enemyCounterPrefab;
 
-    public GameObject princess;
+    public GameObject village;
     public GameObject knight;
     public GameObject bow;
 
@@ -163,14 +163,14 @@ public class Main : MonoBehaviour
     {
         foreach ( GameObject enemy in Enemies() )
         {
-            Vector2 vectorToPrincess = princess.transform.position - enemy.transform.position;
-            if ( vectorToPrincess.magnitude < 0.1f )
+            Vector2 vectorToVilage = village.transform.position - enemy.transform.position;
+            if ( vectorToVilage.magnitude < 0.1f )
             {
                 SceneManager.LoadScene( "GameOver" );
             }
 
-            vectorToPrincess.Normalize();
-            enemy.transform.Translate( enemySpeed * vectorToPrincess * Time.smoothDeltaTime / 5 );
+            vectorToVilage.Normalize();
+            enemy.transform.Translate( enemySpeed * vectorToVilage * Time.smoothDeltaTime / 5 );
         }
     }
 
