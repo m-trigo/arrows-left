@@ -76,7 +76,6 @@ public class Main : MonoBehaviour
     }
 
     private float elapsedVictory = 0;
-    private float elapsedStart = 0;
 
     private bool HasInput()
     {
