@@ -11,7 +11,7 @@ public class GameOverScript : MonoBehaviour
 
         if ( elapsed > 10f || ( elapsed > 0.5f && Input.anyKey ) )
         {
-            SceneManager.LoadScene( "Start" );
+            SceneManager.LoadScene( "Title" );
         }
     }
 }
