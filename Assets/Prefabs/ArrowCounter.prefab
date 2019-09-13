@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 988763061556534978}
   - component: {fileID: 2274290224812221491}
   m_Layer: 0
-  m_Name: arrow-counter
+  m_Name: ArrowCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,8 +66,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -580179053
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9f9b2f7ea8df6241b7e9bdc2724c691, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -77,6 +77,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
