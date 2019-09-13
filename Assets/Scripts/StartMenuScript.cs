@@ -7,7 +7,7 @@ public class StartMenuScript : MonoBehaviour
     {
         if ( Input.anyKeyDown )
         {
-            SceneManager.LoadScene( "Main" );
+            SceneManager.LoadScene( "Tutorial" );
         }
     }
 }
