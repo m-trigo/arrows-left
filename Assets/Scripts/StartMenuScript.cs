@@ -5,7 +5,7 @@ public class StartMenuScript : MonoBehaviour
 {
     void Update()
     {
-        if ( Input.anyKey )
+        if ( Input.anyKeyDown )
         {
             SceneManager.LoadScene( "Main" );
         }
