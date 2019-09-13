@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 159895060}
+  - component: {fileID: 159895061}
   m_Layer: 0
   m_Name: ArrowsCounter
   m_TagString: Untagged
@@ -144,8 +145,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159895059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 470077432}
   - {fileID: 773161826}
@@ -155,6 +156,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159895061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159895059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a3790af15c0c644965cb47a93d1318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowSprite: {fileID: 21300000, guid: cdbfcd93aa041f14285ea0ee9f8c4fc8, type: 3}
+  arrowMissingSprite: {fileID: 21300000, guid: bec9a06964a15ac4fa59d9c8769cebfd, type: 3}
+  arrowCounters:
+  - {fileID: 470077431}
+  - {fileID: 773161825}
+  - {fileID: 1580630224}
+  - {fileID: 1591766521}
+  - {fileID: 295178777}
+  duration: 1.6
+  fadeTime: 0.2
 --- !u!1 &270585753
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +232,7 @@ GameObject:
   - component: {fileID: 295178778}
   - component: {fileID: 295178779}
   m_Layer: 0
-  m_Name: arrow-counter-missing (1)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +290,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bec9a06964a15ac4fa59d9c8769cebfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdbfcd93aa041f14285ea0ee9f8c4fc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -389,7 +412,7 @@ GameObject:
   - component: {fileID: 470077432}
   - component: {fileID: 470077433}
   m_Layer: 0
-  m_Name: arrow-counter
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,7 +655,7 @@ GameObject:
   - component: {fileID: 773161826}
   - component: {fileID: 773161827}
   m_Layer: 0
-  m_Name: arrow-counter (1)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,7 +1146,7 @@ GameObject:
   - component: {fileID: 1580630225}
   - component: {fileID: 1580630226}
   m_Layer: 0
-  m_Name: arrow-counter (2)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1226,7 @@ GameObject:
   - component: {fileID: 1591766522}
   - component: {fileID: 1591766523}
   m_Layer: 0
-  m_Name: arrow-counter-missing
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1261,7 +1284,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bec9a06964a15ac4fa59d9c8769cebfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdbfcd93aa041f14285ea0ee9f8c4fc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
