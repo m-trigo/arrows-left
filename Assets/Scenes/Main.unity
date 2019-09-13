@@ -737,7 +737,7 @@ MonoBehaviour:
   enemyCounterKilledSprite: {fileID: 21300000, guid: e37ac15cbcbf23c44a242308cfc58288,
     type: 3}
   tutorial: {fileID: 1097864849}
-  enemySpawnPeriod: 3
+  enemySpawnPeriod: 4
   enemySpeed: 1
   totalEnemies: 16
   secondsToFullRange: 3

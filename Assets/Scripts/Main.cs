@@ -72,6 +72,7 @@ public class Main : MonoBehaviour
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
         CreateEnemyCounters();
+        SpawnAllEnemies();
     }
 
     private float elapsedVictory = 0;
@@ -114,7 +115,6 @@ public class Main : MonoBehaviour
         KnightAttack();
         KnightPickup();
 
-        EnemySpawn();
         EnemyMovement();
 
         if ( totalEnemiesKilled >= totalEnemies && Enemies().Count == 0 )
@@ -143,19 +143,19 @@ public class Main : MonoBehaviour
 
     #region Enemy Functions
 
-    private void EnemySpawn()
+    private void SpawnAllEnemies()
     {
-        if ( totalEnemiesKilled > 0 && totalEnemiesSpawned < totalEnemies )
+        while ( totalEnemiesSpawned < totalEnemies )
         {
-            elapsedSinceLastSpawn += Time.smoothDeltaTime;
-            if ( elapsedSinceLastSpawn > enemySpawnPeriod )
-            {
-                elapsedSinceLastSpawn %= enemySpawnPeriod;
-                float angle = Random.Range( 0, 2 * Mathf.PI );
-                GameObject enemy = Instantiate( enemyPrefab, transform );
-                enemy.transform.position = new Vector3( Mathf.Cos( angle ), Mathf.Sin( angle ), 0 ) * 7;
-                totalEnemiesSpawned++;
-            }
+            float angle = Random.Range( 0, 2 * Mathf.PI );
+            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 1.5f;
+
+            Vector3 awayFromVillageVector = ( position - village.transform.position ).normalized;
+            Vector3 startingPosition = position + ( ( enemySpeed / 5f ) * enemySpawnPeriod * totalEnemiesSpawned ) * awayFromVillageVector;
+
+            GameObject enemy = Instantiate( enemyPrefab, transform );
+            enemy.transform.position = startingPosition;
+            totalEnemiesSpawned++;
         }
     }
 
