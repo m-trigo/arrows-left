@@ -13,7 +13,6 @@ public class ArrowCountdownAnimation : MonoBehaviour
     public float fadeTime;
 
     private float elapsed = 0;
-    private int alpha = 1;
     private int reverseIndex = 0;
 
     private int Length { get => arrowCounters.Length;  }
