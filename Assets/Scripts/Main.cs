@@ -150,33 +150,32 @@ public class Main : MonoBehaviour
 
     private void AdjustHUD()
     {
-        Vector3 distanceFromCenter = knight.transform.position - transform.position;
+        float y = Camera.main.orthographicSize;
+        float x = y * Camera.main.aspect;
 
-        float dx = Mathf.Abs( distanceFromCenter.x ) - cameraThreshold;
-        float dy = Mathf.Abs( distanceFromCenter.y ) - cameraThreshold;
+        float dx = Mathf.Abs( knight.transform.position.x ) - ( x - cameraThreshold );
+        float dy = Mathf.Abs( knight.transform.position.y ) - ( y - cameraThreshold );
 
         Vector3 cameraPosition = Camera.main.transform.position;
 
         if ( dx > 0 )
         {
-            if ( distanceFromCenter.x < 0 )
+            if ( knight.transform.position.x < 0 )
             {
                 dx *= -1;
             }
 
             cameraPosition.x = dx;
-            Camera.main.transform.position = cameraPosition;
         }
 
         if ( dy > 0 )
         {
-            if ( distanceFromCenter.y < 0 )
+            if ( knight.transform.position.y < 0 )
             {
                 dy *= -1;
             }
 
             cameraPosition.y = dy;
-            Camera.main.transform.position = cameraPosition;
         }
 
         Camera.main.transform.position = cameraPosition;
