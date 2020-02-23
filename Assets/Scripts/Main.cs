@@ -248,7 +248,7 @@ public class Main : MonoBehaviour
     {
         float dt = Time.smoothDeltaTime;
 
-        if ( HasInput() )
+        if ( !HasInput() )
         {
             knight.transform.RotateAround( knight.transform.position, Vector3.forward, turnRatio * dt );
         }
