@@ -10,12 +10,12 @@ public class Main : MonoBehaviour
     public GameObject arrowPrefab;
     public GameObject enemyPrefab;
     public GameObject arrowCounterPrefab;
-    public GameObject arrowCounterHudPrefab;
     public GameObject enemyCounterPrefab;
 
     public GameObject village;
     public GameObject knight;
     public GameObject bow;
+    public GameObject tutorialEnemy;
 
     public Sprite arrowCounterPresentSprite;
     public Sprite arrowCounterMissingSprite;
@@ -25,8 +25,7 @@ public class Main : MonoBehaviour
     public Sprite enemyCounterKilledSprite;
 
     public GameObject arrowCounterContainer;
-
-    public Tutorial tutorial;
+    public GameObject enemyCounterContainer;
 
     #region Enemy Variables
 
@@ -75,14 +74,6 @@ public class Main : MonoBehaviour
         CreateArrowsCounters();
         ChangeArrowCountersDisplay();
         CreateEnemyCounters();
-        SpawnAllEnemies();
-    }
-
-    private float elapsedVictory = 0;
-
-    private bool HasInput()
-    {
-        return Input.anyKey;
     }
 
     void Update()
@@ -101,15 +92,33 @@ public class Main : MonoBehaviour
                 SceneManager.LoadScene( "Victory" );
             }
         }
+
+        if ( onTutorial )
+        {
+            if ( tutorialEnemy == null )
+            {
+                SpawnAllEnemies();
+                onTutorial = false;
+            }
+            else if ( arrowsOnKnight == maxArrows )
+            {
+                tutorialEnemy.SetActive( true );
+                enemyCounterContainer.SetActive( true );
+            }
+        }
     }
 
     private float elapsedSinceLastSpawn;
     private int totalEnemiesSpawned = 1; // Tutorial enemy starts in the game
     private int totalEnemiesKilled = 0;
 
+    private float elapsedVictory = 0;
+
     private bool drawing = false;
     private int arrowsOnKnight;
     private float bowRange = 0;
+
+    private bool onTutorial = true;
 
     private List<GameObject> arrowCounters = new List<GameObject>();
     private List<GameObject> enemyCounters = new List<GameObject>();
@@ -121,7 +130,7 @@ public class Main : MonoBehaviour
         while ( totalEnemiesSpawned < totalEnemies )
         {
             float angle = Random.Range( 0, 2 * Mathf.PI );
-            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 1.5f;
+            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 1.7f;
 
             Vector3 awayFromVillageVector = ( position - village.transform.position ).normalized;
             Vector3 startingPosition = position + ( ( enemySpeed / 5f ) * enemySpawnPeriod * totalEnemiesSpawned ) * awayFromVillageVector;
@@ -189,8 +198,6 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = -Camera.main.orthographicSize * Camera.main.aspect;
 
-        arrowCounterContainer = Instantiate( arrowCounterHudPrefab, hud.transform );
-
         Vector3 firstArrowPosition = new Vector2( x + 1 / 2f, y - 1 / 2f );
         for ( int i = 0; i < maxArrows; i++ )
         {
@@ -227,7 +234,7 @@ public class Main : MonoBehaviour
         Vector3 lastEnemyPosition = new Vector2( x - 1 / 2f, y - 1 / 2f );
         for ( int i = 0; i < totalEnemies; i++ )
         {
-            GameObject enemyCounter = Instantiate( enemyCounterPrefab, hud.transform );
+            GameObject enemyCounter = Instantiate( enemyCounterPrefab, enemyCounterContainer.transform );
             enemyCounter.transform.position = new Vector3( lastEnemyPosition.x - ( i / 4f + i / 8f ), lastEnemyPosition.y, 0 );
             enemyCounters.Add( enemyCounter );
         }
@@ -257,7 +264,7 @@ public class Main : MonoBehaviour
     {
         float dt = Time.smoothDeltaTime;
 
-        if ( !HasInput() )
+        if ( HasInput() )
         {
             knight.transform.RotateAround( knight.transform.position, Vector3.forward, turnRatio * dt );
         }
@@ -402,6 +409,11 @@ public class Main : MonoBehaviour
 
     #endregion
 
+    private bool HasInput()
+    {
+        return Input.anyKey;
+    }
+
     public List<GameObject> GameObjectsWithTag( string tag )
     {
         List<GameObject> list = new List<GameObject>();
@@ -409,7 +421,10 @@ public class Main : MonoBehaviour
         {
             if ( child.CompareTag( tag ) )
             {
-                list.Add( child.gameObject );
+                if ( child.gameObject.activeSelf )
+                {
+                    list.Add( child.gameObject );
+                }
             }
         }
 
