@@ -215,6 +215,8 @@ public class Main : MonoBehaviour
                 arrowCounters[ i ].GetComponent<SpriteRenderer>().sprite = arrowCounterPresentSprite;
             }
         }
+
+        arrowCounterContainer.GetComponent<HudElement>().SetLoop( arrowsOnKnight == 0 );
     }
 
     private void CreateEnemyCounters()
