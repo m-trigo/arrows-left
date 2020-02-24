@@ -10,6 +10,7 @@ public class Main : MonoBehaviour
     public GameObject arrowPrefab;
     public GameObject enemyPrefab;
     public GameObject arrowCounterPrefab;
+    public GameObject arrowCounterHudPrefab;
     public GameObject enemyCounterPrefab;
 
     public GameObject village;
@@ -22,6 +23,8 @@ public class Main : MonoBehaviour
     public GameObject trailGenerator;
     public Sprite enemyCounterAliveSprite;
     public Sprite enemyCounterKilledSprite;
+
+    public GameObject arrowCounterContainer;
 
     public Tutorial tutorial;
 
@@ -186,10 +189,12 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = -Camera.main.orthographicSize * Camera.main.aspect;
 
+        arrowCounterContainer = Instantiate( arrowCounterHudPrefab, hud.transform );
+
         Vector3 firstArrowPosition = new Vector2( x + 1 / 2f, y - 1 / 2f );
         for ( int i = 0; i < maxArrows; i++ )
         {
-            GameObject arrowCounter = Instantiate( arrowCounterPrefab, hud.transform );
+            GameObject arrowCounter = Instantiate( arrowCounterPrefab, arrowCounterContainer.transform );
             arrowCounter.transform.position = new Vector3( firstArrowPosition.x + ( i / 4f + i / 8f ), firstArrowPosition.y, 0 );
             arrowCounters.Add( arrowCounter );
         }
@@ -197,6 +202,8 @@ public class Main : MonoBehaviour
 
     private void ChangeArrowCountersDisplay()
     {
+        arrowCounterContainer.GetComponent<HudElement>().Blink();
+
         for ( int i = 0; i < arrowCounters.Count; i++ )
         {
             if ( arrowsOnKnight < ( i + 1 ) )
@@ -277,7 +284,6 @@ public class Main : MonoBehaviour
 
             IncreaseBowRange();
             Shoot( NearestEnemy() );
-            ChangeArrowCountersDisplay();
         }
         else
         {
@@ -385,8 +391,10 @@ public class Main : MonoBehaviour
             arrowScript.target = target;
 
             totalEnemiesKilled++;
-            ChangeEnemyCountersDisplay();
             arrowsOnKnight--;
+
+            ChangeEnemyCountersDisplay();
+            ChangeArrowCountersDisplay();
         }
     }
 
