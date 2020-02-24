@@ -27,6 +27,8 @@ public class Main : MonoBehaviour
     public GameObject arrowCounterContainer;
     public GameObject enemyCounterContainer;
 
+    public ScreenTransitionAnimation screenTransition;
+
     #region Enemy Variables
 
     [Range( 1, 5 )]
@@ -78,6 +80,11 @@ public class Main : MonoBehaviour
 
     void Update()
     {
+        if ( !screenTransition.IsTransitionOver() )
+        {
+            return;
+        }
+
         KnightMovement();
         KnightAttack();
         KnightPickup();
@@ -89,7 +96,7 @@ public class Main : MonoBehaviour
             elapsedVictory += Time.smoothDeltaTime;
             if ( elapsedVictory > secondsToFullRange )
             {
-                SceneManager.LoadScene( "Victory" );
+                screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Victory" ) );
             }
         }
 
@@ -148,7 +155,7 @@ public class Main : MonoBehaviour
             Vector2 vectorToVilage = village.transform.position - enemy.transform.position;
             if ( vectorToVilage.magnitude < 0.1f )
             {
-                SceneManager.LoadScene( "GameOver" );
+                screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "GameOver" ) );
             }
 
             vectorToVilage.Normalize();

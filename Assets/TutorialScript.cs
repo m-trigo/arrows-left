@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour
 {
+    public ScreenTransitionAnimation screenTransition;
+
     private float elapsed = 0;
 
     void Update()
@@ -13,11 +15,11 @@ public class TutorialScript : MonoBehaviour
 
         if ( elapsed > 60 )
         {
-            SceneManager.LoadScene( "Title" );
+            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
         }
         else if ( Input.anyKeyDown && elapsed > 0.4f )
         {
-            SceneManager.LoadScene( "Main" );
+            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Main" ) );
         }
     }
 }

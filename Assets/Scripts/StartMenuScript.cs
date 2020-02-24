@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuScript : MonoBehaviour
 {
+    public ScreenTransitionAnimation screenTransition;
+
     private float elapsed = 0;
 
     void Update()
@@ -11,7 +13,7 @@ public class StartMenuScript : MonoBehaviour
 
         if ( Input.anyKeyDown && elapsed > 0.2f )
         {
-            SceneManager.LoadScene( "Tutorial" );
+            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Tutorial" ) );
         }
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class VictoryScript : MonoBehaviour
 {
+    public ScreenTransitionAnimation screenTransition;
+
     private float elapsed = 0;
 
     void Update()
@@ -11,7 +13,7 @@ public class VictoryScript : MonoBehaviour
 
         if ( elapsed > 10f || ( Input.anyKeyDown && elapsed > 1 ) )
         {
-            SceneManager.LoadScene( "Title" );
+            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
         }
     }
 }
