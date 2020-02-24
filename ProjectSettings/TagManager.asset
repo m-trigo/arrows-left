@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arrow
   - Enemy
+  - Sword
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: HUD
     uniqueID: 3714788243
+    locked: 0
+  - name: ScreenTransition
+    uniqueID: 2759212079
     locked: 0
