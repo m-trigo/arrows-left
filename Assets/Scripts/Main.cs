@@ -78,8 +78,6 @@ public class Main : MonoBehaviour
         bow.transform.localScale = Vector3.one * ( bowRange / maxBowRange );
         arrowsOnKnight = maxArrows - Arrows().Count;
         elapsedSinceLastSpawn = enemySpawnPeriod; // spawn the first at the end of the tutorial;
-        CreateArrowsCounters();
-        ChangeArrowCountersDisplay();
         CreateEnemyCounters();
     }
 
@@ -98,8 +96,11 @@ public class Main : MonoBehaviour
                 bow.SetActive( true );
                 foreach ( TMP_Text text in tutorialCanvas.GetComponentsInChildren<TMP_Text>() )
                 {
-                    text.CrossFadeAlpha( 0, 0.4f, false );
+                    text.CrossFadeAlpha( 0, 3, false );
                 }
+
+                CreateArrowsCounters();
+                ChangeArrowCountersDisplay();
             }
 
             return;
