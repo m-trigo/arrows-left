@@ -72,7 +72,8 @@ public class Main : MonoBehaviour
 
     void Start()
     {
-        bowRange = maxBowRange;
+        bowRange = 0;
+        bow.transform.localScale = Vector3.one * ( bowRange / maxBowRange );
         arrowsOnKnight = maxArrows - Arrows().Count;
         elapsedSinceLastSpawn = enemySpawnPeriod; // spawn the first at the end of the tutorial;
         CreateArrowsCounters();
@@ -92,6 +93,7 @@ public class Main : MonoBehaviour
             if ( HasInput() )
             {
                 started = true;
+                bow.SetActive( true );
             }
 
             return;
