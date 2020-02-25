@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Main : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Main : MonoBehaviour
 
     public ScreenTransitionAnimation screenTransition;
 
+    public GameObject tutorialCanvas;
     private bool started = false;
 
     #region Enemy Variables
@@ -94,6 +96,10 @@ public class Main : MonoBehaviour
             {
                 started = true;
                 bow.SetActive( true );
+                foreach ( TMP_Text text in tutorialCanvas.GetComponentsInChildren<TMP_Text>() )
+                {
+                    text.CrossFadeAlpha( 0, 0.4f, false );
+                }
             }
 
             return;

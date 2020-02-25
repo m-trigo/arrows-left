@@ -13,7 +13,7 @@ public class StartMenuScript : MonoBehaviour
 
         if ( Input.anyKeyDown && elapsed > 0.2f )
         {
-            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Tutorial" ) );
+            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Main" ) );
         }
     }
 }
