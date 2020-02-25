@@ -112,6 +112,11 @@ public class Main : MonoBehaviour
                 tutorialEnemy.SetActive( true );
                 enemyCounterContainer.SetActive( true );
             }
+
+            if ( ( knight.transform.position - village.transform.position ).sqrMagnitude > 1000 )
+            {
+                SceneManager.LoadScene( "GameOver" );
+            }
         }
     }
 
