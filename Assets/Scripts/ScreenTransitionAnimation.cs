@@ -9,6 +9,11 @@ public class ScreenTransitionAnimation : MonoBehaviour
 
     public void AnimateSceneEnd( OnSceneEndCallback callback )
     {
+        if ( sceneEndCallback != null )
+        {
+            return;
+        }
+
         sceneEndCallback = callback;
         transform.position = Vector2.right * 30;
         endPosition = Vector2.zero;
