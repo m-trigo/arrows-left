@@ -29,6 +29,8 @@ public class Main : MonoBehaviour
 
     public ScreenTransitionAnimation screenTransition;
 
+    private bool started = false;
+
     #region Enemy Variables
 
     [Range( 1, 5 )]
@@ -82,6 +84,16 @@ public class Main : MonoBehaviour
     {
         if ( !screenTransition.IsTransitionOver() )
         {
+            return;
+        }
+
+        if ( !started )
+        {
+            if ( HasInput() )
+            {
+                started = true;
+            }
+
             return;
         }
 
