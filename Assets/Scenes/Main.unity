@@ -1219,7 +1219,7 @@ MonoBehaviour:
   secondsToFullRange: 3
   maxBowRange: 1
   maxArrows: 5
-  pickUpRange: 1
+  pickUpRange: 1.5
   turnRatio: 30
   cameraThreshold: 2
 --- !u!222 &1132238825
