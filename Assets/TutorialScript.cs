@@ -13,7 +13,7 @@ public class TutorialScript : MonoBehaviour
     {
         elapsed += Time.smoothDeltaTime;
 
-        if ( elapsed > 60 )
+        if ( elapsed > 20 )
         {
             screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
         }
