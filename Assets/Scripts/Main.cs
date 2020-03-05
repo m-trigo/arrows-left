@@ -167,7 +167,7 @@ public class Main : MonoBehaviour
         while ( totalEnemiesSpawned < totalEnemies )
         {
             float angle = Random.Range( 0, 2 * Mathf.PI );
-            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 2.25f;
+            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 2f;
 
             Vector3 awayFromVillageVector = ( position - village.transform.position ).normalized;
             Vector3 startingPosition = position + ( ( enemySpeed / 5f ) * enemySpawnPeriod * totalEnemiesSpawned ) * awayFromVillageVector;
