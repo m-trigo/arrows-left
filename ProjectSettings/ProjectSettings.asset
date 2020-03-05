@@ -122,7 +122,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 0
-  bundleVersion: 1.4
+  bundleVersion: 1.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,7 +166,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.Company.ProductName
   buildNumber: {}
-  AndroidBundleVersionCode: 9
+  AndroidBundleVersionCode: 10
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
