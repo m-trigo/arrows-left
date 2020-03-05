@@ -11,7 +11,12 @@ public class StartMenuScript : MonoBehaviour
     {
         elapsed += Time.deltaTime;
 
-        if ( Input.anyKeyDown && elapsed > 0.2f )
+        if ( !Input.anyKey )
+        {
+            elapsed = 0;
+        }
+
+        if ( elapsed > 0.5f )
         {
             screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Tutorial" ) );
         }

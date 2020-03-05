@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TutorialScript : MonoBehaviour
+public class EndScreenScript : MonoBehaviour
 {
     public ScreenTransitionAnimation screenTransition;
 
@@ -24,13 +22,9 @@ public class TutorialScript : MonoBehaviour
             inputElapsed = 0;
         }
 
-        if ( idleElapsed > 10 )
+        if ( idleElapsed > 10 || inputElapsed > 0.5f )
         {
             screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
-        }
-        else if ( inputElapsed > 0.5f )
-        {
-            screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Main" ) );
         }
     }
 }
