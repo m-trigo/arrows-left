@@ -94,10 +94,6 @@ public class Main : MonoBehaviour
             {
                 started = true;
                 bow.SetActive( true );
-                foreach ( TMP_Text text in tutorialCanvas.GetComponentsInChildren<TMP_Text>() )
-                {
-                    text.CrossFadeAlpha( 0, 3, false );
-                }
 
                 CreateArrowsCounters();
                 ChangeArrowCountersDisplay();
@@ -130,6 +126,14 @@ public class Main : MonoBehaviour
             }
             else if ( arrowsOnKnight == maxArrows )
             {
+                if ( !enemyCounterContainer.activeSelf )
+                {
+                    foreach ( TMP_Text text in tutorialCanvas.GetComponentsInChildren<TMP_Text>() )
+                    {
+                        text.CrossFadeAlpha( 0, 3, false );
+                    }
+                }
+
                 tutorialEnemy.SetActive( true );
                 enemyCounterContainer.SetActive( true );
             }
@@ -163,7 +167,7 @@ public class Main : MonoBehaviour
         while ( totalEnemiesSpawned < totalEnemies )
         {
             float angle = Random.Range( 0, 2 * Mathf.PI );
-            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 1.7f;
+            Vector3 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * Camera.main.orthographicSize * 2.25f;
 
             Vector3 awayFromVillageVector = ( position - village.transform.position ).normalized;
             Vector3 startingPosition = position + ( ( enemySpeed / 5f ) * enemySpawnPeriod * totalEnemiesSpawned ) * awayFromVillageVector;
@@ -231,7 +235,7 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = -Camera.main.orthographicSize * Camera.main.aspect;
 
-        Vector3 firstArrowPosition = new Vector2( x + 1 / 2f, y - 1 / 2f );
+        Vector3 firstArrowPosition = new Vector2( x +  0.3f, y -  0.3f );
         for ( int i = 0; i < maxArrows; i++ )
         {
             GameObject arrowCounter = Instantiate( arrowCounterPrefab, arrowCounterContainer.transform );
@@ -264,7 +268,7 @@ public class Main : MonoBehaviour
         float y = Camera.main.orthographicSize;
         float x = Camera.main.orthographicSize * Camera.main.aspect;
 
-        Vector3 lastEnemyPosition = new Vector2( x - 1 / 2f, y - 1 / 2f );
+        Vector3 lastEnemyPosition = new Vector2( x - 0.3f, y - 0.3f);
         for ( int i = 0; i < totalEnemies; i++ )
         {
             GameObject enemyCounter = Instantiate( enemyCounterPrefab, enemyCounterContainer.transform );
@@ -377,7 +381,7 @@ public class Main : MonoBehaviour
         if ( bowRange < maxBowRange )
         {
             bowRange += maxBowRange * Time.smoothDeltaTime / secondsToFullRange;
-            Vector3 scale = Vector3.one * ( bowRange / maxBowRange );
+            Vector3 scale = Vector3.one * 0.5f * ( bowRange / maxBowRange );
 
             if ( scale.x > 1 )
             {
