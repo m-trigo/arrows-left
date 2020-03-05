@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
@@ -471,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
@@ -789,7 +789,7 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.4}
+  m_AnchoredPosition: {x: 0, y: 0.8}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &909956866
@@ -1277,7 +1277,7 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
@@ -1783,7 +1783,7 @@ PrefabInstance:
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7138808981198237998, guid: b61d52fd36fe07a48a331159ada10391,
         type: 3}
