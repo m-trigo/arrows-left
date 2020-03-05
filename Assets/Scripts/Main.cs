@@ -130,7 +130,7 @@ public class Main : MonoBehaviour
                 {
                     foreach ( TMP_Text text in tutorialCanvas.GetComponentsInChildren<TMP_Text>() )
                     {
-                        text.CrossFadeAlpha( 0, 3, false );
+                        text.CrossFadeAlpha( 0, 4, false );
                     }
                 }
 
