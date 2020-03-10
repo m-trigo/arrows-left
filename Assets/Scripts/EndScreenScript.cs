@@ -5,24 +5,18 @@ public class EndScreenScript : MonoBehaviour
 {
     public ScreenTransitionAnimation screenTransition;
 
-    private float idleElapsed = 0;
-    private float inputElapsed = 0;
+    private float elapsed = 0;
 
     void Update()
     {
-        idleElapsed += Time.smoothDeltaTime;
-        inputElapsed += Time.smoothDeltaTime;
+        elapsed += Time.smoothDeltaTime;
 
-        if ( Input.anyKey )
+        if ( !screenTransition.IsTransitionOver() )
         {
-            idleElapsed = 0;
-        }
-        else
-        {
-            inputElapsed = 0;
+            return;
         }
 
-        if ( idleElapsed > 10 || inputElapsed > 0.5f )
+        if ( Input.anyKey || elapsed > 10 )
         {
             screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
         }
