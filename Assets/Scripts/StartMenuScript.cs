@@ -11,7 +11,7 @@ public class StartMenuScript : MonoBehaviour
     {
         elapsed += Time.deltaTime;
 
-        if ( !Input.anyKey )
+        if ( !Input.GetKey( KeyCode.Space ) )
         {
             elapsed = 0;
         }

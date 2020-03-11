@@ -448,7 +448,7 @@ public class Main : MonoBehaviour
 
     private bool HasInput()
     {
-        return Input.anyKey;
+        return Input.GetKey( KeyCode.Space );
     }
 
     public List<GameObject> GameObjectsWithTag( string tag )

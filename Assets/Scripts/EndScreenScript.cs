@@ -16,7 +16,7 @@ public class EndScreenScript : MonoBehaviour
             return;
         }
 
-        if ( Input.anyKey || elapsed > 10 )
+        if ( Input.GetKey( KeyCode.Space ) || elapsed > 10 )
         {
             screenTransition.AnimateSceneEnd( () => SceneManager.LoadScene( "Title" ) );
         }
