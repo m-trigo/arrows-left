@@ -29,6 +29,7 @@ public class Main : MonoBehaviour
     public GameObject enemyCounterContainer;
 
     public ScreenTransitionAnimation screenTransition;
+    public InputFeedback inputFeedback;
 
     public GameObject tutorialCanvas;
     private bool started = false;
@@ -87,6 +88,8 @@ public class Main : MonoBehaviour
         {
             return;
         }
+
+        inputFeedback.HasInput( HasInput() );
 
         if ( !started )
         {
