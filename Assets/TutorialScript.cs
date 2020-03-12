@@ -15,7 +15,7 @@ public class TutorialScript : MonoBehaviour
         idleElapsed += Time.smoothDeltaTime;
         inputElapsed += Time.smoothDeltaTime;
 
-        if ( Input.GetKey( KeyCode.Space ) )
+        if ( Input.anyKey )
         {
             idleElapsed = 0;
         }
