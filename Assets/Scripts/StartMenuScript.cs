@@ -7,6 +7,11 @@ public class StartMenuScript : MonoBehaviour
 
     private float elapsed = 0;
 
+    public void OpenUrl()
+    {
+        Application.OpenURL("https://moving-pixels.itch.io");
+    }
+
     void Update()
     {
         elapsed += Time.deltaTime;
